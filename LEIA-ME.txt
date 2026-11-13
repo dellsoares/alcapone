@@ -1,46 +1,41 @@
-BARBEARIA AL CAPONE | LANDING PAGE — VERSÃO INICIAL
-==================================================
+AL CAPONE BARBEARIA — LANDING PAGE v4 (13/11/2026)
 
-INICIAR:
-  1. Extraia todo o conteúdo do arquivo ZIP para uma pasta.
-  2. Abra index.html no navegador.
-  3. Se desejar executar em servidor local: python -m http.server 8000
-     e acesse http://localhost:8000
+COMO ABRIR
+1. Extraia o ZIP inteiro (mantenha a estrutura de pastas).
+2. Abra index.html no navegador ou hospede todos os arquivos juntos.
+3. Para publicar: envie index.html, css/, js/ e images/ para o servidor.
 
-ARQUIVOS:
-  index.html            — página única completa em português.
-  css/alcapone.css      — layout, cores, responsividade e animações.
-  js/alcapone.js        — menu, rolagem, galeria e prévia do agendamento.
-  images/               — imagens provisórias retiradas do tema fornecido.
-  video/                — vídeo provisório retirado do tema fornecido.
+AGENDAMENTO
+A seção Agendamento oferece "VER AGENDA NESTA PÁGINA", que abre uma tentativa de iframe com a agenda oficial do AppBarber.
+ATENÇÃO: O domínio do AppBarber pode negar uso dentro de iframe por regras de segurança (CSP/X-Frame-Options), cookies ou login. Não foi possível validar a política de incorporação do provedor. A seção sempre apresenta um link externo seguro como alternativa.
+Link oficial: https://sites.appbarber.com.br/barbeariaalcapone
+Esta landing NÃO consulta horários disponíveis por conta própria, NÃO bloqueia nem confirma reservas. Essas operações continuam inteiramente no AppBarber.
 
-SEÇÕES:
-  Início (hero com vídeo), Sobre, Serviços, Inspiração, Preços,
-  Assinaturas, Agendamento e Contato/endereço, além do rodapé.
+CRÉDITO DE DESENVOLVIMENTO
+Rodapé final: Criado por Wendell Soares — https://wendellsoares.jor.br
 
-PONTOS IMPORTANTES:
-  - O pacote enviado contém index-3.html, não index-5.html.
-    Por isso esta landing usa a mesma direção visual do Blaxcut
-    (escuro, cobre #cf814d, fontes Bebas Neue/Manrope, movimento),
-    em uma composição unificada e adaptada à Al Capone.
-  - Os preços, planos, telefones, endereço e horários são ESPAÇOS
-    PROVISÓRIOS. Não foi inventada nenhuma informação da empresa.
-  - O formulário gera SOMENTE uma prévia local que pode ser copiada;
-    não confirma nem envia agendamento, pois não há backend/WhatsApp
-    oficial configurado.
-  - Não há rastreamento, serviços de terceiros ou coleta de dados
-    pelo formulário. As fontes usam o Google Fonts para carregar online;
-    há fallback local.
-  - Fotos e vídeo são os materiais demonstrativos incluídos no ZIP
-    original Blaxcut, a serem substituídos pelo conteúdo real da Al Capone.
-  - Confirme as permissões/licenciamento dos materiais originais
-    antes de publicar comercialmente.
+CONTATOS
+Instagram: https://www.instagram.com/al_capone_barbearia
+WhatsApp atendimento: https://wa.me/5531982865590
+WhatsApp assinaturas: https://wa.me/5531989879066
+Telefone: (31) 2514-5153
+Rua Padre Eustáquio, 2160, Padre Eustáquio — Belo Horizonte/MG
 
-PARA TROCAR CONTEÚDOS:
-  index.html: textos, títulos, valores, endereços, serviços e planos.
-  css/alcapone.css: cores no bloco :root.
-  images/ e video/: mídias definitivas.
-  js/alcapone.js: integrar a agenda/WhatsApp ou sistema real no futuro.
+MÍDIAS
+Todas as fotos nesta versão são as fornecidas pelo cliente ou aprovadas na conversa. Galeria de 6 estilos inclui imagens ilustrativas/geradas com base nas referências do cliente; não afirmar que são trabalhos fotografados na barbearia.
+Foto de fundo: imagem_fundo.webp. Logo: logo_alcapaone.png.
+Foto de Andrei: 70e8a77e...webp. Foto de Phillip: watermarked_img_...jpg.
+Fundo da seção de preços em preto conforme solicitado.
 
-Esta é a etapa de estrutura + identidade visual, não a versão
-final de divulgação pública.
+ARQUIVOS
+- index.html — página principal
+- css/alcapone.css — estilos, temas, animações e responsividade
+- js/alcapone.js — navegação e carrossel
+- images/alcapone — imagens reais/aprovadas em formatos otimizados
+
+OBSERVAÇÕES
+- O Google Maps precisa de internet e usa o iframe fornecido pelo cliente.
+- As fontes são carregadas pelo Google Fonts (com fallbacks locais).
+- Planos Gold, Platinum e Black têm preços sob consulta, conforme o PDF do cliente.
+- Os planos da assinatura têm regras e devem ser confirmados pela equipe.
+- Antes de publicar, confirme a titularidade/consentimento de uso das fotos e condições de uso da marca.
