@@ -1,0 +1,46 @@
+BARBEARIA AL CAPONE | LANDING PAGE — VERSÃO INICIAL
+==================================================
+
+INICIAR:
+  1. Extraia todo o conteúdo do arquivo ZIP para uma pasta.
+  2. Abra index.html no navegador.
+  3. Se desejar executar em servidor local: python -m http.server 8000
+     e acesse http://localhost:8000
+
+ARQUIVOS:
+  index.html            — página única completa em português.
+  css/alcapone.css      — layout, cores, responsividade e animações.
+  js/alcapone.js        — menu, rolagem, galeria e prévia do agendamento.
+  images/               — imagens provisórias retiradas do tema fornecido.
+  video/                — vídeo provisório retirado do tema fornecido.
+
+SEÇÕES:
+  Início (hero com vídeo), Sobre, Serviços, Inspiração, Preços,
+  Assinaturas, Agendamento e Contato/endereço, além do rodapé.
+
+PONTOS IMPORTANTES:
+  - O pacote enviado contém index-3.html, não index-5.html.
+    Por isso esta landing usa a mesma direção visual do Blaxcut
+    (escuro, cobre #cf814d, fontes Bebas Neue/Manrope, movimento),
+    em uma composição unificada e adaptada à Al Capone.
+  - Os preços, planos, telefones, endereço e horários são ESPAÇOS
+    PROVISÓRIOS. Não foi inventada nenhuma informação da empresa.
+  - O formulário gera SOMENTE uma prévia local que pode ser copiada;
+    não confirma nem envia agendamento, pois não há backend/WhatsApp
+    oficial configurado.
+  - Não há rastreamento, serviços de terceiros ou coleta de dados
+    pelo formulário. As fontes usam o Google Fonts para carregar online;
+    há fallback local.
+  - Fotos e vídeo são os materiais demonstrativos incluídos no ZIP
+    original Blaxcut, a serem substituídos pelo conteúdo real da Al Capone.
+  - Confirme as permissões/licenciamento dos materiais originais
+    antes de publicar comercialmente.
+
+PARA TROCAR CONTEÚDOS:
+  index.html: textos, títulos, valores, endereços, serviços e planos.
+  css/alcapone.css: cores no bloco :root.
+  images/ e video/: mídias definitivas.
+  js/alcapone.js: integrar a agenda/WhatsApp ou sistema real no futuro.
+
+Esta é a etapa de estrutura + identidade visual, não a versão
+final de divulgação pública.
