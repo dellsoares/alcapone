@@ -1,0 +1,23 @@
+AL CAPONE | AGENDAMENTO GRATUITO COM SUPABASE
+
+O endereço e a chave pública já estão configurados no app.js e minha.js.
+Não há servidor Python, Docker nem Render neste projeto.
+
+1. No Supabase, acesse o SQL Editor e execute o arquivo 01_ATIVAR_NO_SUPABASE.sql.
+2. Depois publique esta pasta como site estático no GitHub Pages, em um repositório SEPARADO da landing atual.
+3. Abra o endereço do GitHub Pages e teste um agendamento. Ele será salvo no banco Supabase.
+
+IMPORTANTE: a landing atual não foi modificada. Este projeto contém apenas
+as telas de agendamento e consulta/cancelamento do cliente. Painel de barbeiros
+será integrado posteriormente.
+
+Apenas a publishable key foi incorporada. Nenhuma senha nem secret key.
+A publishable key pode ficar no front-end; todas as tabelas estão bloqueadas para leitura pública.
+
+Projeto Supabase: https://supabase.com/dashboard/project/vsqvzfwlndkwmajkvtuc
+
+Fotos, logo e visual seguem a versão criada anteriormente.
+
+AVISO: o banco e a interface foram preparados e validados estaticamente, mas
+não foram testados contra o seu projeto Supabase (não tenho acesso autenticado).
+A oferta gratuita do Supabase tem limites e pode pausar o projeto por inatividade.

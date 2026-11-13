@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17110d"><meta name="description" content="Agendamento exclusivo da Al Capone Barbearia. Escolha seu serviço, profissional e horário.">
+  <title>Agendamento | Al Capone Barbearia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand" aria-label="Início do agendamento Al Capone"><img src="assets/logo.png" alt="Logo Al Capone" width="58" height="58"><span>AL CAPONE <small>BARBEARIA</small></span></a>
+      <nav aria-label="Navegação"><a class="top-link" href="#como-funciona">COMO FUNCIONA</a><a class="top-link" href="minha.html">MINHA RESERVA</a><a class="top-cta" href="https://www.instagram.com/al_capone_barbearia" target="_blank" rel="noopener noreferrer">INSTAGRAM <span>↗</span></a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="booking-hero">
+      <div class="hero-image" aria-hidden="true"></div><div class="hero-mask" aria-hidden="true"></div>
+      <div class="wrap hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> PADRE EUSTÁQUIO · BELO HORIZONTE</div>
+          <p class="micro">AGENDAMENTO EXCLUSIVO</p>
+          <h1>SEU TEMPO.<br>SEU ESTILO.<br><em>SEU HORÁRIO.</em></h1>
+          <p class="hero-desc">Escolha o atendimento, o profissional e o melhor momento. Uma experiência simples, direta e feita para quem valoriza cada detalhe.</p>
+          <div class="hero-proof"><div><strong>02</strong><span>PROFISSIONAIS</span></div><div><strong>12</strong><span>SERVIÇOS</span></div><div><strong>01</strong><span>AGENDA CENTRAL</span></div></div>
+          <div class="hero-note"><i>✦</i> Reserve sem mensagens e sem esperar atendimento.</div>
+        </div>
+        <div class="booking-shell" id="formulario">
+          <div class="shell-header"><div><span class="micro">AL CAPONE / RESERVAS</span><h2>AGENDE SEU<br><em>PRÓXIMO HORÁRIO.</em></h2></div><div class="shell-mark">AC</div></div>
+          <div class="demo-banner" id="demoBanner" hidden><strong>SEM CONEXÃO</strong><span>Não foi possível conectar ao banco de agendamentos.</span></div>
+          <ol class="steps" id="steps" aria-label="Etapas da reserva">
+            <li class="active" data-step="1"><span>01</span><small>SERVIÇO</small></li>
+            <li data-step="2"><span>02</span><small>PROFISSIONAL</small></li>
+            <li data-step="3"><span>03</span><small>DATA E HORA</small></li>
+            <li data-step="4"><span>04</span><small>CONFIRMAÇÃO</small></li>
+          </ol>
+          <div class="shell-body">
+            <section class="wizard-panel active" data-panel="1">
+              <div class="step-heading"><span class="micro">PASSO 01 / 04</span><h3>O QUE VOCÊ <em>PROCURA?</em></h3><p>Escolha um serviço para começar.</p></div>
+              <div id="serviceOptions" class="service-options" aria-label="Serviços disponíveis"></div>
+            </section>
+            <section class="wizard-panel" data-panel="2">
+              <div class="step-heading"><span class="micro">PASSO 02 / 04</span><h3>COM QUEM VAMOS <em>CUIDAR DO SEU ESTILO?</em></h3><p>Selecione o profissional que irá atender você.</p></div>
+              <div id="proOptions" class="pro-options"></div>
+            </section>
+            <section class="wizard-panel" data-panel="3">
+              <div class="step-heading"><span class="micro">PASSO 03 / 04</span><h3>RESERVE SEU <em>MELHOR MOMENTO.</em></h3><p>Os horários exibidos refletem a agenda atual do profissional.</p></div>
+              <div class="calendar-bar"><div><span class="micro">ESCOLHA O DIA</span><strong id="monthTitle">—</strong></div><div class="calendar-arrows"><button id="datePrev" type="button" aria-label="Datas anteriores">←</button><button id="dateNext" type="button" aria-label="Próximas datas">→</button></div></div>
+              <div class="days-strip" id="daysStrip" aria-label="Escolha a data"></div>
+              <div class="times-heading"><span class="micro">HORÁRIOS DISPONÍVEIS</span><span id="availabilityMeta">—</span></div>
+              <div class="slots-area" id="slotArea" aria-live="polite"><div class="empty-note">Escolha uma data para consultar os horários.</div></div>
+            </section>
+            <section class="wizard-panel" data-panel="4">
+              <div class="step-heading"><span class="micro">PASSO 04 / 04</span><h3>FALTA POUCO PARA <em>CONFIRMAR.</em></h3><p>Confira os detalhes e informe seus dados.</p></div>
+              <div class="summary" id="summary"></div>
+              <form id="bookingForm" novalidate>
+                <label for="clientName">SEU NOME <b>*</b></label><input id="clientName" name="name" autocomplete="name" maxlength="100" required placeholder="Como podemos chamar você?">
+                <div class="field-grid"><div><label for="clientPhone">WHATSAPP COM DDD <b>*</b></label><input id="clientPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" required placeholder="(31) 99999-9999"></div><div><label for="clientEmail">E-MAIL <small>(OPCIONAL)</small></label><input id="clientEmail" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="150"></div></div>
+                <label for="clientNotes">OBSERVAÇÃO <small>(OPCIONAL)</small></label><textarea id="clientNotes" rows="2" maxlength="400" placeholder="Algo que a equipe deva saber antes do atendimento?"></textarea>
+                <label class="consent"><input type="checkbox" id="consent"><span>Concordo com o uso dos meus dados para realizar e administrar esta reserva. Dados usados apenas para a finalidade do agendamento. <b>*</b></span></label>
+                <p class="form-error" id="formError" role="alert" hidden></p>
+              </form>
+            </section>
+            <section class="wizard-panel" data-panel="5" id="confirmedPanel">
+              <div class="confirmed-ornament">✦</div>
+              <span class="micro">RESERVA CONFIRMADA</span><h3>HORÁRIO <em>GARANTIDO.</em></h3>
+              <p>Seu agendamento foi registrado na agenda da Al Capone.</p>
+              <div class="summary" id="confirmationInfo"></div>
+              <a id="manageLink" href="minha.html" class="action-primary">VER / CANCELAR MINHA RESERVA <span>↗</span></a>
+              <p class="soft-note">Guarde este link para consultar ou cancelar sua reserva. Não há envio automático de WhatsApp nesta versão.</p>
+              <button id="newBooking" type="button" class="action-secondary">FAZER NOVO AGENDAMENTO ↗</button>
+            </section>
+          </div>
+          <div class="shell-footer" id="wizardFooter"><button id="backBtn" type="button" class="back-btn" hidden>← VOLTAR</button><span class="step-hint" id="stepHint">Selecione um serviço para continuar.</span><button type="button" class="next-btn" id="nextBtn" disabled>CONTINUAR <span>↗</span></button></div>
+        </div>
+      </div>
+    </section>
+    <section class="how-section" id="como-funciona"><div class="wrap"><div><p class="micro">SIMPLES E DIRETO</p><h2>UM HORÁRIO FEITO <em>PARA VOCÊ.</em></h2><p>O sistema respeita o expediente de cada profissional e libera apenas horários compatíveis com a duração do serviço. Reservas confirmadas desaparecem da disponibilidade.</p></div><div class="how-list"><div><span>01</span><strong>ESCOLHA</strong><small>O serviço e o barbeiro</small></div><div><span>02</span><strong>RESERVE</strong><small>O dia e horário</small></div><div><span>03</span><strong>COMPAREÇA</strong><small>Com a reserva confirmada</small></div></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap"><div class="footer-main"><div><img src="assets/logo.png" alt="Logo Al Capone" width="54" height="54"><strong>AL CAPONE BARBEARIA</strong></div><p>Rua Padre Eustáquio, 2160 · Belo Horizonte/MG<br>Terça a sábado · Consulte os horários disponíveis</p><a href="https://wa.me/5531982865590" target="_blank" rel="noopener noreferrer">DÚVIDAS? FALE NO WHATSAPP ↗</a></div><div class="footer-small"><span>Agendamento Al Capone Barbearia · © <span id="currentYear">2026</span></span><span>Criado por <a href="https://wendellsoares.jor.br" target="_blank" rel="noopener noreferrer">Wendell Soares ↗</a></span></div></div></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
