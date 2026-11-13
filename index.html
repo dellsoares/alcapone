@@ -17,17 +17,18 @@
 <link href="css/alcapone.css" rel="stylesheet"/>
 <style id="alcapone-booking-ui">
 .booking-float {
-  position: fixed; z-index: 1000; right: 24px; bottom: 24px;
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  min-height: 58px; padding: 0 24px; border: 1px solid rgba(255,255,255,.28);
-  border-radius: 999px; background: linear-gradient(135deg, #d8bd8b, #bd965b);
-  color: #17120f; font-family: Manrope, sans-serif; font-size: 12px;
-  font-weight: 800; letter-spacing: .09em; text-decoration: none; text-transform: uppercase;
-  box-shadow: 0 12px 34px rgba(0,0,0,.42); transition: transform .2s ease, box-shadow .2s ease;
+  position: fixed; z-index: 1000; right: 22px; bottom: 22px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 46px; min-width: 142px; padding: 0 16px; border: 1px solid rgba(202,145,93,.72);
+  border-radius: 3px; background: linear-gradient(145deg, #302218, #1b140f);
+  color: #f1e4d5; font-family: Manrope, sans-serif; font-size: 10px;
+  font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(0,0,0,.38); transition: transform .2s ease, border-color .2s ease, background .2s ease;
 }
-.booking-float:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(0,0,0,.5); }
+.booking-float:hover { transform: translateY(-2px); border-color: #e5b27f; background: #3a281b; }
 .booking-float:focus-visible, .booking-modal-close:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-.booking-float .booking-float-arrow { font-size: 20px; line-height: 1; }
+.booking-float .booking-float-arrow { display:grid; place-items:center; width:22px; height:22px; color:#e5b27f; border-left:1px solid rgba(202,145,93,.35); padding-left:8px; }
+.booking-float .booking-float-arrow svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 .booking-modal {
   width: min(1120px, calc(100vw - 36px)); height: min(860px, calc(100dvh - 36px));
   max-width: none; max-height: none; padding: 0; border: 0; overflow: visible;
@@ -56,8 +57,9 @@
 .booking-modal-fallback a { color: #e6c58f; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
 .booking-modal-frame { display: block; width: 100%; height: 100%; min-height: 0; border: 0; background: #fff; }
 @media (max-width: 700px) {
-  .booking-float { left: 14px; right: 14px; bottom: 12px; width: auto; min-height: 54px; }
-  body { padding-bottom: 82px; }
+  .booking-float { left:auto; right:14px; bottom:14px; min-width:122px; min-height:42px; padding:0 12px; gap:7px; font-size:9px; letter-spacing:.1em; }
+  .booking-float .booking-float-arrow { width:19px; height:19px; padding-left:6px; }
+  body { padding-bottom: 68px; }
   .booking-modal { width: 100vw; height: 100dvh; margin: 0; }
   .booking-modal-panel { border: 0; border-radius: 0; }
   .booking-modal-header { padding: 13px 16px; }
@@ -289,7 +291,7 @@
 <div class="footer-credit">Criado por <a aria-label="Visitar o site de Wendell Soares" href="https://wendellsoares.jor.br" rel="noopener noreferrer" target="_blank">Wendell Soares <span aria-hidden="true">↗</span></a></div></div>
 </footer>
 <a class="booking-float" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open aria-label="Agendar meu horário na Al Capone">
-  <span>AGENDAR MEU HORÁRIO</span><span class="booking-float-arrow" aria-hidden="true">↗</span>
+  <span>AGENDAR</span><span class="booking-float-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
 </a>
 <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-modal-title">
   <div class="booking-modal-panel">
