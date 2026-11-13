@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#17120f" name="theme-color"/>
+<meta content="Al Capone Barbearia, Padre Eustáquio, Belo Horizonte. Cortes, barboterapia, visagismo e Clube VIP. Conheça nossos profissionais e agende online." name="description"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="Al Capone Barbearia | Seu estilo impõe presença" property="og:title"/>
+<meta content="Corte R$ 45, cuidados de barba, visagismo e Clube VIP em BH. Consulte horários e agende online na Al Capone." property="og:description"/>
+<meta content="website" property="og:type"/>
+<title>Al Capone Barbearia | Seu estilo impõe presença · Belo Horizonte</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/alcapone.css" rel="stylesheet"/>
+<style id="alcapone-booking-ui">
+.booking-float {
+  position: fixed; z-index: 1000; right: 24px; bottom: 24px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 58px; padding: 0 24px; border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px; background: linear-gradient(135deg, #d8bd8b, #bd965b);
+  color: #17120f; font-family: Manrope, sans-serif; font-size: 12px;
+  font-weight: 800; letter-spacing: .09em; text-decoration: none; text-transform: uppercase;
+  box-shadow: 0 12px 34px rgba(0,0,0,.42); transition: transform .2s ease, box-shadow .2s ease;
+}
+.booking-float:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(0,0,0,.5); }
+.booking-float:focus-visible, .booking-modal-close:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.booking-float .booking-float-arrow { font-size: 20px; line-height: 1; }
+.booking-modal {
+  width: min(1120px, calc(100vw - 36px)); height: min(860px, calc(100dvh - 36px));
+  max-width: none; max-height: none; padding: 0; border: 0; overflow: visible;
+  background: transparent; color: #f6f0e7;
+}
+.booking-modal::backdrop { background: rgba(8,7,6,.82); backdrop-filter: blur(7px); }
+.booking-modal-panel {
+  display: grid; grid-template-rows: auto auto minmax(0, 1fr); width: 100%; height: 100%;
+  overflow: hidden; border: 1px solid rgba(216,189,139,.42); border-radius: 18px;
+  background: #17120f; box-shadow: 0 24px 80px rgba(0,0,0,.55);
+}
+.booking-modal-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 16px 22px; background: #211a14; border-bottom: 1px solid rgba(216,189,139,.2);
+}
+.booking-modal-kicker { display: block; margin-bottom: 3px; color: #d8bd8b; font: 800 10px/1.4 Manrope, sans-serif; letter-spacing: .16em; }
+.booking-modal-title { margin: 0; color: #f6f0e7; font: 28px/1 'Bebas Neue', sans-serif; letter-spacing: .04em; }
+.booking-modal-close {
+  flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid rgba(216,189,139,.42);
+  border-radius: 50%; background: transparent; color: #f6f0e7; font: 28px/1 Manrope, sans-serif; cursor: pointer;
+}
+.booking-modal-fallback {
+  margin: 0; padding: 10px 22px; background: #2a2118; color: #e9dfd0;
+  font: 500 12px/1.5 Manrope, sans-serif;
+}
+.booking-modal-fallback a { color: #e6c58f; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.booking-modal-frame { display: block; width: 100%; height: 100%; min-height: 0; border: 0; background: #fff; }
+@media (max-width: 700px) {
+  .booking-float { left: 14px; right: 14px; bottom: 12px; width: auto; min-height: 54px; }
+  body { padding-bottom: 82px; }
+  .booking-modal { width: 100vw; height: 100dvh; margin: 0; }
+  .booking-modal-panel { border: 0; border-radius: 0; }
+  .booking-modal-header { padding: 13px 16px; }
+  .booking-modal-title { font-size: 25px; }
+  .booking-modal-fallback { padding: 9px 16px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { .booking-float { transition: none; } }
+</style>
+
+<script defer="" src="js/alcapone.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Barbershop", "name": "Al Capone Barbearia", "telephone": "+55 31 98286-5590", "priceRange": "A partir de R$ 15", "address": {"@type": "PostalAddress", "streetAddress": "Rua Padre Eustáquio, 2160", "addressLocality": "Belo Horizonte", "addressRegion": "MG", "postalCode": "30720-100", "addressCountry": "BR"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday"], "opens": "09:00", "closes": "19:30"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "09:00", "closes": "20:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "15:00"}], "hasMap": "https://www.google.com/maps/search/?api=1&query=Rua%20Padre%20Eust%C3%A1quio%2C%202160%2C%20Padre%20Eust%C3%A1quio%2C%20Belo%20Horizonte%2C%20MG%2C%2030720-100", "sameAs": ["https://www.instagram.com/al_capone_barbearia"]}</script>
+<meta content="images/alcapone/ambiente-fundo.webp" property="og:image"/></head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div aria-hidden="true" class="reading-progress" id="reading-progress"></div>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="Barbearia Al Capone, voltar ao início" class="brand" href="#inicio">
+<img alt="" class="brand-logo" height="50" src="images/alcapone/logo-alcapone.png" width="50"/>
+<span class="brand-name">AL CAPONE <small>BARBEARIA</small></span>
+</a>
+<nav aria-label="Navegação principal" class="desktop-nav">
+<a class="nav-link is-active" href="#inicio">Início</a>
+<a class="nav-link" href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a><a class="nav-link" href="#servicos">Serviços</a>
+<a class="nav-link" href="#precos">Preços</a>
+<a class="nav-link" href="#assinaturas">Assinaturas</a>
+<a class="nav-link" href="#contato">Contato</a>
+</nav>
+<a class="button button-small header-cta" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open>Agendar agora <span aria-hidden="true">↗</span></a>
+<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menu-toggle" type="button"><span></span><span></span><span></span></button>
+</div>
+<nav aria-label="Navegação para celular" class="mobile-nav" id="mobile-nav" inert="">
+<a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#equipe">Equipe</a><a href="#servicos">Serviços</a>
+<a href="#precos">Preços</a><a href="#assinaturas">Assinaturas</a><a href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open>Agendamento</a><a href="#contato">Contato</a>
+</nav>
+</header>
+<main id="conteudo">
+<section aria-labelledby="hero-title" class="hero" id="inicio">
+<video aria-hidden="true" class="hero-video" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="images/alcapone/ambiente-fundo.webp">
+<source src="images/alcapone/hero-video.mp4" type="video/mp4"/>
+</video>
+<div aria-hidden="true" class="hero-shade"></div>
+<div aria-hidden="true" class="hero-outline">AL CAPONE</div>
+<div class="container hero-inner">
+<div class="hero-content" data-reveal="">
+<p class="eyebrow"><span class="eyebrow-rule"></span> PADRE EUSTÁQUIO · BELO HORIZONTE <span class="eyebrow-star">✦</span> AL CAPONE BARBEARIA</p>
+<h1 id="hero-title">SEU ESTILO<br/>IMPÕE <em>PRESENÇA.</em></h1>
+<p class="hero-copy">Você não precisa de mais um corte. Precisa do visual certo para chegar com confiança. Na Al Capone, cada detalhe conta — do corte à barboterapia.</p>
+<div class="hero-actions">
+<a class="button" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open>Quero agendar meu horário <span aria-hidden="true">↗</span></a>
+<a class="button button-outline" href="#assinaturas">Conhecer o Clube VIP <span aria-hidden="true">→</span></a>
+</div>
+<div aria-label="Informações sobre a barbearia" class="hero-proof"><span><strong>★ 5,0</strong> <small>Avaliação informada</small></span><span><strong>R$ 45</strong> <small>Valor do corte</small></span><span><strong>BH</strong> <small>Padre Eustáquio</small></span></div>
+</div>
+<div aria-hidden="true" class="hero-stamp"><img alt="" class="hero-stamp-logo" src="images/alcapone/logo-alcapone.png"/></div>
+</div>
+<a class="scroll-cue" href="#sobre"><span class="scroll-line"></span> DESLIZE PARA DESCOBRIR</a>
+<div aria-hidden="true" class="hero-index">01 / 07</div>
+</section>
+<div aria-label="Tradição, estilo e atitude" class="marquee-band">
+<div aria-hidden="true" class="marquee-track">
+<span>TRADIÇÃO <b>✦</b> PRECISÃO <b>✦</b> ESTILO <b>✦</b> ATITUDE <b>✦</b></span>
+<span>TRADIÇÃO <b>✦</b> PRECISÃO <b>✦</b> ESTILO <b>✦</b> ATITUDE <b>✦</b></span>
+<span>TRADIÇÃO <b>✦</b> PRECISÃO <b>✦</b> ESTILO <b>✦</b> ATITUDE <b>✦</b></span>
+</div>
+</div>
+<section aria-labelledby="about-heading" class="section about-section" id="sobre">
+<div class="container about-grid">
+<div class="about-visual" data-reveal="">
+<div class="about-frame about-frame-main"><img alt="Barbeiro realizando corte de cabelo em atendimento na Al Capone Barbearia" loading="lazy" src="images/alcapone/sobre-ambiente.webp"/></div>
+<div class="about-frame about-frame-secondary"><img alt="Ferramentas de barbeiro e itens de cuidado da Al Capone Barbearia" loading="lazy" src="images/alcapone/sobre-atendimento.webp"/></div>
+<span aria-hidden="true" class="about-visual-caption">CRAFTED WITH ATTITUDE — ✦</span>
+</div>
+<div class="about-text" data-reveal="">
+<p class="section-kicker"><span>01 / SOBRE NÓS</span></p>
+<h2 class="section-title" id="about-heading">O ESTILO<br/>NÃO ACONTECE<br/><em>POR ACASO.</em></h2>
+<div class="small-rule"></div>
+<p>Uma boa imagem fala antes de você. É por isso que a Al Capone reúne cortes, barboterapia com ozonioterapia, cuidados com a pele e atendimento visagista em um só endereço, no Padre Eustáquio.</p>
+<p>Aqui, você escolhe como quer se apresentar ao mundo. Nós ajudamos a transformar essa intenção em um visual à sua altura.</p>
+<div class="about-benefits"><span>✦ Atendimento para crianças</span><span>✦ Acessibilidade</span><span>✦ Wi-Fi</span></div>
+<a class="text-link" href="#servicos">ESCOLHA SEU PRÓXIMO SERVIÇO <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</section><section aria-labelledby="team-heading" class="section team-section" id="equipe">
+<div class="container">
+<div class="section-heading" data-reveal=""><div><p class="section-kicker"><span>02 / PROFISSIONAIS</span></p><h2 class="section-title" id="team-heading">QUEM CUIDA<br/><em>DO SEU ESTILO.</em></h2></div><p class="section-intro">O atendimento começa pela confiança. Conheça os profissionais da Al Capone e escolha com quem deseja marcar seu próximo horário.</p></div>
+<div class="team-grid">
+<article class="team-card" data-reveal=""><div class="team-photo"><img alt="Andrei Martins, profissional da Al Capone Barbearia" height="1024" loading="lazy" src="images/alcapone/andrei.webp" width="825"/><span class="team-photo-count">01 / 02</span></div><div class="team-info"><div><span class="micro-label">AL CAPONE · EQUIPE</span><h3>ANDREI MARTINS</h3></div><a aria-label="Agendar horário pela agenda online da Al Capone" class="team-link" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">AGENDAR HORÁRIO <span aria-hidden="true">↗</span></a></div></article>
+<article class="team-card" data-reveal=""><div class="team-photo"><img alt="Philipe Augusto, profissional da Al Capone Barbearia" height="1152" loading="lazy" src="images/alcapone/phillip.webp" width="928"/><span class="team-photo-count">02 / 02</span></div><div class="team-info"><div><span class="micro-label">AL CAPONE · EQUIPE</span><h3>PHILIPE AUGUSTO</h3></div><a aria-label="Agendar horário pela agenda online da Al Capone" class="team-link" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">AGENDAR HORÁRIO <span aria-hidden="true">↗</span></a></div></article>
+</div>
+<p class="team-guidance">Ao abrir a agenda oficial, selecione seu profissional, serviço e horário disponível.</p>
+</div>
+</section>
+<section aria-labelledby="services-heading" class="section services-section" id="servicos">
+<div class="container">
+<div class="section-heading" data-reveal="">
+<div><p class="section-kicker"><span>02 / SERVIÇOS AL CAPONE</span></p><h2 class="section-title" id="services-heading">O DETALHE MUDA <em>TUDO.</em></h2></div>
+<p class="section-intro">Do corte impecável à análise de visagismo: encontre o serviço que combina com o momento e com a imagem que você quer transmitir.</p>
+</div>
+<div class="service-grid">
+<article class="service-card" data-reveal="">
+<div class="service-photo"><img alt="Barbeiro realizando um corte infantil na barbearia" loading="lazy" src="images/alcapone/servico-01.webp"/><span class="service-no">01</span></div>
+<div class="service-meta"><div><h3>CORTE</h3><p>O clássico bem executado nunca perde espaço.</p><span class="service-tag">30 min · R$ 45,00</span></div><a aria-label="Conferir disponibilidade para Corte na agenda online" class="round-arrow service-book" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">↗</a></div>
+</article>
+<article class="service-card" data-reveal="">
+<div class="service-photo"><img alt="Ferramentas de barbear e pincéis de acabamento" loading="lazy" src="images/alcapone/servico-02.webp"/><span class="service-no">02</span></div>
+<div class="service-meta"><div><h3>BARBOTERAPIA COM OZONIOTERAPIA</h3><p>Cuidado e acabamento para valorizar sua barba.</p><span class="service-tag">30 min · R$ 45,00</span></div><a aria-label="Conferir disponibilidade para Barboterapia com ozonioterapia na agenda online" class="round-arrow service-book" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">↗</a></div>
+</article>
+<article class="service-card" data-reveal="">
+<div class="service-photo"><img alt="Corte masculino sendo finalizado com tesoura" loading="lazy" src="images/alcapone/servico-03.webp"/><span class="service-no">03</span></div>
+<div class="service-meta"><div><h3>CORTE + BARBOTERAPIA + OZONIOTERAPIA</h3><p>Um visual completo, do cabelo à barba.</p><span class="service-tag">60 min · R$ 90,00</span></div><a aria-label="Conferir disponibilidade para Corte + barboterapia + ozonioterapia na agenda online" class="round-arrow service-book" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">↗</a></div>
+</article>
+<article class="service-card service-card-featured" data-reveal="">
+<div class="service-photo"><img alt="Barba masculina recebendo acabamento cuidadoso" loading="lazy" src="images/alcapone/servico-04.webp"/><span class="service-no">04</span><span class="service-badge">SERVIÇO DESTAQUE</span></div>
+<div class="service-meta"><div><h3>ATENDIMENTO VISAGISTA</h3><p>Análise personalizada, sugestões e orientações para o seu estilo.</p><span class="service-tag">80 min · R$ 175,00</span></div><a aria-label="Conferir disponibilidade para Atendimento visagista na agenda online" class="round-arrow service-book" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">↗</a></div>
+</article>
+</div>
+<a class="text-link services-all" href="#precos">VEJA TODOS OS 12 SERVIÇOS E VALORES <span aria-hidden="true">↗</span></a>
+</div>
+</section>
+<section aria-labelledby="styles-heading" class="styles-section" id="estilos">
+<div class="container styles-header" data-reveal="">
+<div><p class="section-kicker"><span>INSPIRAÇÃO</span></p><h2 class="section-title" id="styles-heading">A IMAGEM FALA <em>POR VOCÊ.</em></h2></div>
+<div class="slider-controls"><button aria-label="Ver estilos anteriores" id="styles-prev" type="button">←</button><button aria-label="Ver próximos estilos" id="styles-next" type="button">→</button></div>
+</div>
+<div aria-label="Galeria horizontal de estilos de cabelo" class="styles-track" id="styles-track" tabindex="0"><figure class="style-item"><img alt="Corte social clássico masculino com acabamento alinhado" height="1200" loading="lazy" src="images/alcapone/corte-01-social.webp" width="900"/><figcaption>01 <strong>SOCIAL CLÁSSICO</strong></figcaption></figure><figure class="style-item"><img alt="Corte masculino fade com degradê limpo" height="1200" loading="lazy" src="images/alcapone/imagesalcaponecorte-02-fade.webp" width="900"/><figcaption>02 <strong>FADE MODERNO</strong></figcaption></figure><figure class="style-item"><img alt="Corte mullet contemporâneo com cabelo mais longo na nuca" height="1200" loading="lazy" src="images/alcapone/corte-03-mullet.webp" width="900"/><figcaption>03 <strong>MULLET MODERNO</strong></figcaption></figure><figure class="style-item"><img alt="Corte curto militar com cabelo platinado" height="1200" loading="lazy" src="images/alcapone/corte-04-militar.webp" width="900"/><figcaption>04 <strong>MILITAR</strong></figcaption></figure><figure class="style-item"><img alt="Corte afro taper com contorno preciso em modelo negro" height="1200" loading="lazy" src="images/alcapone/corte-05-afro-taper.webp" width="900"/><figcaption>05 <strong>AFRO TAPER</strong></figcaption></figure><figure class="style-item"><img alt="Corte masculino ondulado e texturizado com laterais em degradê" height="1200" loading="lazy" src="images/alcapone/corte-06-texturizado.webp" width="900"/><figcaption>06 <strong>TEXTURIZADO</strong></figcaption></figure></div>
+<div class="container"><p class="content-note">Imagens ilustrativas de estilos de corte, criadas a partir de referências visuais. Consulte a equipe sobre o estilo mais adequado ao seu cabelo.</p></div>
+</section>
+<section aria-labelledby="prices-heading" class="section prices-section" id="precos">
+<div class="container">
+<div class="section-heading centered" data-reveal=""><p class="section-kicker"><span>03 / PREÇOS E DURAÇÃO</span></p><h2 class="section-title" id="prices-heading">QUAL É O SEU <em>PRÓXIMO PASSO?</em></h2><p>Escolha com clareza. Confira todos os serviços, o tempo previsto de atendimento e o investimento em cada cuidado.</p></div>
+<div class="prices-layout">
+<div class="price-aside" data-reveal="">
+<div class="price-photo"><img alt="Registro real de atendimento na Al Capone com cliente de barba longa" height="1800" loading="lazy" src="images/alcapone/precos-foto-lateral.webp" width="1286"/><div class="photo-vertical">PRECISÃO EM CADA DETALHE</div></div>
+<article class="price-featured">
+<span class="micro-label">SERVIÇO DESTAQUE</span>
+<h3>ATENDIMENTO VISAGISTA</h3>
+<p>Uma leitura personalizada do seu rosto, estilo e objetivo para orientar o corte, a barba e a imagem que mais valorizam você.</p>
+<div class="price-featured-meta"><span>80 min</span><strong>R$ 175,00</strong></div>
+<a class="button button-outline" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">AGENDAR ESSE ATENDIMENTO <span aria-hidden="true">↗</span></a>
+</article>
+</div>
+<div class="price-panel" data-reveal="">
+<div class="price-panel-top"><h3>MENU DE SERVIÇOS</h3><span>VALORES INFORMADOS PELA BARBEARIA</span></div>
+<div class="price-list compact-grid">
+<div class="price-row"><div><h4>PEZINHO</h4><p>10 min</p></div><span>R$ 15,00</span></div>
+<div class="price-row"><div><h4>SOBRANCELHA NA NAVALHA</h4><p>10 min</p></div><span>R$ 15,00</span></div>
+<div class="price-row"><div><h4>CORTE</h4><p>30 min</p></div><span>R$ 45,00</span></div>
+<div class="price-row"><div><h4>BARBOTERAPIA COM OZONIOTERAPIA</h4><p>30 min</p></div><span>R$ 45,00</span></div>
+<div class="price-row"><div><h4>RELAXAMENTO + HIDRATAÇÃO</h4><p>40 min</p></div><span>R$ 60,00</span></div>
+<div class="price-row"><div><h4>CORTE + SOBRANCELHA</h4><p>40 min</p></div><span>R$ 60,00</span></div>
+<div class="price-row"><div><h4>CORTE INFANTIL (MENORES DE 10 ANOS)</h4><p>40 min</p></div><span>R$ 60,00</span></div>
+<div class="price-row"><div><h4>LIMPEZA DE PELE</h4><p>60 min</p></div><span>R$ 70,00</span></div>
+<div class="price-row"><div><h4>CORTE + BARBOTERAPIA + OZONIOTERAPIA</h4><p>60 min</p></div><span>R$ 90,00</span></div>
+<div class="price-row"><div><h4>CORTE + BARBOTERAPIA + SOBRANCELHA</h4><p>60 min</p></div><span>R$ 100,00</span></div>
+<div class="price-row"><div><h4>PROGRESSIVA / BOTOX / SELAGEM</h4><p>90 min</p></div><span>A partir de R$ 100,00</span></div>
+</div>
+<p class="price-disclaimer">Duração estimada conforme a tabela fornecida. Progressiva, botox e selagem: preço inicial de R$ 100, sujeito à avaliação. O atendimento visagista aparece em destaque por ser uma proposta mais consultiva e personalizada. Confirme valor e disponibilidade antes do atendimento.</p>
+<a class="text-link" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open>AGENDAR MEU HORÁRIO <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="subscriptions-heading" class="section subscriptions-section" id="assinaturas">
+<div class="container">
+<div class="section-heading centered" data-reveal=""><p class="section-kicker"><span>04 / CLUBE VIP AL CAPONE</span></p><h2 class="section-title" id="subscriptions-heading">ESTILO NÃO É EVENTO.<br/><em>É HÁBITO.</em></h2><p>Escolha um plano para encaixar seus cuidados na rotina e aproveite descontos em produtos. Planos Bronze, Prata e Ouro válidos às terças e quartas.</p></div>
+<div class="plan-grid">
+<article class="plan-card" data-reveal=""><span class="plan-ordinal">CLUBE VIP · 01</span><h3>BRONZE</h3><p class="plan-description">Seu corte no radar. Seu estilo sempre em pauta.</p><div class="plan-price"><span>R$ 109,90</span><small>/ MÊS</small></div><div class="plan-divider"></div><ul><li>Corte</li><li>5% de desconto em produtos</li><li>Terça e quarta</li></ul><a class="button button-outline" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20BRONZE%20do%20Clube%20VIP%20da%20Al%20Capone.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o%20e%20as%20condi%C3%A7%C3%B5es.%20" rel="noopener noreferrer" target="_blank">CONHECER ESTE PLANO <span aria-hidden="true">↗</span></a></article>
+<article class="plan-card" data-reveal=""><span class="plan-ordinal">CLUBE VIP · 02</span><h3>PRATA</h3><p class="plan-description">Dedique à barba o cuidado que ela merece.</p><div class="plan-price"><span>R$ 114,90</span><small>/ MÊS</small></div><div class="plan-divider"></div><ul><li>Barboterapia</li><li>5% de desconto em produtos</li><li>Terça e quarta</li></ul><a class="button button-outline" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20PRATA%20do%20Clube%20VIP%20da%20Al%20Capone.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o%20e%20as%20condi%C3%A7%C3%B5es.%20" rel="noopener noreferrer" target="_blank">CONHECER ESTE PLANO <span aria-hidden="true">↗</span></a></article>
+<article class="plan-card is-featured" data-reveal=""><span class="plan-badge">TOP · PLANO OURO</span><span class="plan-ordinal">CLUBE VIP · 03</span><h3>OURO</h3><p class="plan-description">O combo que merece lugar na sua rotina.</p><div class="plan-price"><span>R$ 199,90</span><small>/ MÊS</small></div><div class="plan-divider"></div><ul><li>Corte + barboterapia</li><li>10% de desconto em produtos</li><li>Terça e quarta</li></ul><a class="button" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20plano%20OURO%20do%20Clube%20VIP%20da%20Al%20Capone.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o%20e%20as%20condi%C3%A7%C3%B5es.%20" rel="noopener noreferrer" target="_blank">CONHECER ESTE PLANO <span aria-hidden="true">↗</span></a></article>
+</div>
+<div class="other-plans" data-reveal=""><div class="other-plans-head"><p class="section-kicker"><span>MAIS FLEXIBILIDADE</span></p><h3>SEU PLANO, <em>SEU DIA.</em></h3><p>Conheça as opções válidas para qualquer dia de funcionamento. Valores mediante consulta.</p></div>
+<article class="other-plan"><div><span class="micro-label">CLUBE VIP · TODOS OS DIAS</span><h4>GOLD</h4><p>Corte · Qualquer dia</p></div><div><strong>VALOR SOB CONSULTA</strong><a aria-label="Consultar o plano GOLD pelo WhatsApp" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Quero%20consultar%20o%20valor%20e%20as%20condi%C3%A7%C3%B5es%20do%20plano%20GOLD%20do%20Clube%20VIP%20Al%20Capone." rel="noopener noreferrer" target="_blank">CONSULTAR <span aria-hidden="true">↗</span></a></div></article>
+<article class="other-plan"><div><span class="micro-label">CLUBE VIP · TODOS OS DIAS</span><h4>PLATINUM</h4><p>Barboterapia · Qualquer dia</p></div><div><strong>VALOR SOB CONSULTA</strong><a aria-label="Consultar o plano PLATINUM pelo WhatsApp" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Quero%20consultar%20o%20valor%20e%20as%20condi%C3%A7%C3%B5es%20do%20plano%20PLATINUM%20do%20Clube%20VIP%20Al%20Capone." rel="noopener noreferrer" target="_blank">CONSULTAR <span aria-hidden="true">↗</span></a></div></article>
+<article class="other-plan"><div><span class="micro-label">CLUBE VIP · TODOS OS DIAS</span><h4>BLACK</h4><p>Corte + barboterapia · Qualquer dia</p></div><div><strong>VALOR SOB CONSULTA</strong><a aria-label="Consultar o plano BLACK pelo WhatsApp" href="https://wa.me/5531989879066?text=Ol%C3%A1%21%20Quero%20consultar%20o%20valor%20e%20as%20condi%C3%A7%C3%B5es%20do%20plano%20BLACK%20do%20Clube%20VIP%20Al%20Capone." rel="noopener noreferrer" target="_blank">CONSULTAR <span aria-hidden="true">↗</span></a></div></article>
+</div>
+<details class="terms-details" data-reveal=""><summary>LEIA AS CONDIÇÕES DAS ASSINATURAS <span aria-hidden="true">＋</span></summary><div class="terms-content"><p><strong>Uso pessoal:</strong> assinatura individual, única, intransferível e não cumulativa.</p><p><strong>Validade:</strong> 30 dias corridos a partir da contratação; serviços não utilizados não são transferidos para períodos seguintes.</p><p><strong>Intervalo:</strong> pelo menos 3 dias entre os agendamentos.</p><p><strong>Profissional:</strong> uso vinculado ao profissional escolhido na contratação. Em indisponibilidade excepcional, o assinante poderá aguardar ou solicitar cancelamento.</p><p><strong>Cancelamento:</strong> pode ser solicitado a qualquer momento, conforme a política da barbearia. Não há reembolso proporcional por dias ou sessões não utilizados.</p><p>Para conhecer regras completas de contratação, utilização e valores dos demais planos, fale com a equipe.</p></div></details>
+<p class="content-note centered-note">As descrições de benefícios informadas no material não especificam uma quantidade de atendimentos por mês. Consulte o regulamento antes de contratar.</p>
+</div>
+</section>
+<section aria-labelledby="booking-heading" class="section booking-section" id="agendamento">
+<div aria-hidden="true" class="booking-overlay"></div>
+<div class="container booking-grid">
+<div class="booking-intro" data-reveal="">
+<p class="section-kicker"><span>06 / AGENDAMENTO ONLINE</span></p>
+<h2 class="section-title" id="booking-heading">SEU PRÓXIMO<br/>HORÁRIO <em>COMEÇA AQUI.</em></h2>
+<p>O próximo passo para um visual à sua altura está a poucos cliques. Agora você pode marcar seu atendimento diretamente pela agenda online da Al Capone.</p>
+<div class="booking-hours"><strong>FUNCIONAMENTO</strong><span>Ter. e qua. 9h às 19h30<br/>Qui. e sex. 9h às 20h<br/>Sáb. 9h às 15h</span></div>
+</div>
+<div class="booking-card official-booking" data-reveal="">
+<div class="booking-card-head"><div><span class="micro-label">AGENDA ONLINE · AL CAPONE</span><h3>AGENDE COM QUEM ENTENDE DO SEU ESTILO.</h3></div><span class="booking-step">01 <span>/</span> 03</span></div>
+<div class="official-steps">
+<div class="official-step"><span class="official-number">01</span><div><strong>ESCOLHA SEU SERVIÇO</strong><p>Corte, barboterapia, visagismo ou o atendimento que você procura.</p></div></div>
+<div class="official-step"><span class="official-number">02</span><div><strong>SELECIONE O PROFISSIONAL</strong><p>Escolha Andrei Martins ou Philipe Augusto na plataforma de agendamento.</p></div></div>
+<div class="official-step"><span class="official-number">03</span><div><strong>CONFIRA OS HORÁRIOS</strong><p>Veja a disponibilidade na agenda oficial e conclua sua marcação.</p></div></div>
+</div>
+<a class="button booking-submit" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">AGENDAR MEU HORÁRIO <span aria-hidden="true">↗</span></a>
+<p class="booking-notice">A agenda abre aqui mesmo, em uma janela sobreposta. Se preferir, você também pode abri-la em uma nova aba.</p>
+<div class="booking-link-alternative"><a href="https://dellsoares.github.io/alcapone-agendamento/" rel="noopener noreferrer" target="_blank">ABRIR A AGENDA EM NOVA ABA <span aria-hidden="true">↗</span></a></div>
+<div class="booking-support"><span>PRECISA DE AJUDA?</span><a href="https://wa.me/5531982865590?text=Ol%C3%A1%21%20Preciso%20de%20ajuda%20para%20agendar%20um%20hor%C3%A1rio%20na%20Al%20Capone." rel="noopener noreferrer" target="_blank">FALAR NO WHATSAPP <span aria-hidden="true">↗</span></a></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="contact-heading" class="section contact-section" id="contato">
+<div class="container">
+<div class="section-heading" data-reveal=""><div><p class="section-kicker"><span>06 / VENHA PARA A AL CAPONE</span></p><h2 class="section-title" id="contact-heading">SEU NOVO VISUAL<br/>ESTÁ <em>LOGO ALI.</em></h2></div><p class="section-intro">Estamos no Padre Eustáquio, em Belo Horizonte. Fácil de encontrar, fácil de se sentir em casa.</p></div>
+<div class="contact-grid">
+<div class="contact-info" data-reveal="">
+<div class="contact-item"><span aria-hidden="true" class="contact-icon">⌖</span><div><h3>ONDE ESTAMOS</h3><p>Rua Padre Eustáquio, 2160<br/>Padre Eustáquio · Belo Horizonte/MG<br/>CEP 30720-100</p><a class="contact-inline" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Padre%20Eust%C3%A1quio%2C%202160%2C%20Padre%20Eust%C3%A1quio%2C%20Belo%20Horizonte%2C%20MG%2C%2030720-100" rel="noopener noreferrer" target="_blank">COMO CHEGAR ↗</a></div></div>
+<div class="contact-item"><span aria-hidden="true" class="contact-icon">◷</span><div><h3>HORÁRIOS</h3><p>Terça e quarta: 9h às 19h30<br/>Quinta e sexta: 9h às 20h<br/>Sábado: 9h às 15h<br/>Domingo e segunda: fechado</p></div></div>
+<div class="contact-item"><span aria-hidden="true" class="contact-icon">✳</span><div><h3>FALE COM A GENTE</h3><p><a class="contact-wa-link" href="https://wa.me/5531982865590" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="whatsapp-svg" height="17" viewbox="0 0 24 24" width="17"><path d="M20.25 11.4a8.34 8.34 0 0 1-12.13 7.42L3 20l1.25-4.87A8.33 8.33 0 1 1 20.25 11.4Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path><path d="M8.5 7.7c-.26-.32-.5-.26-.69.02-.38.57-.57 1.22-.26 2 .9 2.12 2.75 3.85 4.9 4.65.8.3 1.54.05 2.04-.34.36-.27.6-.8.45-1.02l-1.8-.91c-.23-.1-.34-.1-.54.13l-.65.78c-1.19-.46-2.08-1.33-2.65-2.47l.7-.68c.17-.2.16-.4.05-.58Z" fill="currentColor"></path></svg> (31) 98286-5590 · WhatsApp ↗</a><br/><a href="tel:+553125145153">(31) 2514-5153 · Telefone</a><br/><a href="https://wa.me/5531989879066" rel="noopener noreferrer" target="_blank">(31) 98987-9066 · Assinaturas ↗</a></p></div></div><div class="contact-social"><span class="micro-label">REDES SOCIAIS</span><a aria-label="Abrir Instagram da Al Capone Barbearia" href="https://www.instagram.com/al_capone_barbearia" rel="noopener noreferrer" target="_blank">◎ @al_capone_barbearia ↗</a></div>
+<div class="contact-amenities"><span>Wi-Fi</span><span>Acessibilidade</span><span>Atendimento infantil</span></div>
+<p class="payment-note">ACEITAMOS DINHEIRO · PIX · CRÉDITO · DÉBITO</p>
+<a class="button" href="https://dellsoares.github.io/alcapone-agendamento/" data-booking-open rel="noopener noreferrer" target="_blank">AGENDAR MEU HORÁRIO <span aria-hidden="true">↗</span></a>
+</div>
+<div aria-label="Localização da Barbearia Al Capone no Padre Eustáquio" class="map-placeholder map-live" data-reveal="">
+<iframe allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3751.217135669664!2d-43.9727478!3d-19.915252699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDU0JzU0LjkiUyA0M8KwNTgnMjEuOSJX!5e0!3m2!1spt-BR!2sbr!4v1794545743396!5m2!1spt-BR!2sbr" title="Mapa da Al Capone Barbearia, Rua Padre Eustáquio 2160"></iframe>
+<a class="map-overlay-link" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Padre%20Eust%C3%A1quio%2C%202160%2C%20Padre%20Eust%C3%A1quio%2C%20Belo%20Horizonte%2C%20MG%2C%2030720-100" rel="noopener noreferrer" target="_blank">ABRIR NO GOOGLE MAPS <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-top"><div><p class="section-kicker"><span>O SEU ESTILO MERECE MAIS.</span></p><h2>DEIXE SUA MARCA.<br/><em>VENHA PRA AL CAPONE.</em></h2><a class="text-link footer-action" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open>ESCOLHER MEU HORÁRIO <span aria-hidden="true">↗</span></a></div><a aria-label="Voltar ao início" class="footer-top-link" href="#inicio">↑</a></div>
+<div class="footer-bottom"><a class="footer-brand" href="#inicio"><img alt="" class="footer-logo" height="64" src="images/alcapone/logo-alcapone.png" width="64"/><span class="footer-wordmark">AL CAPONE <small>BARBEARIA</small></span></a><p>© <span id="year">2026</span> Al Capone Barbearia · Padre Eustáquio · BH.</p><span class="footer-signature">PRECISÃO · ESTILO · ATITUDE</span><a aria-label="Instagram oficial da Al Capone" class="footer-instagram" href="https://www.instagram.com/al_capone_barbearia" rel="noopener noreferrer" target="_blank">INSTAGRAM ↗</a></div>
+<div class="footer-credit">Criado por <a aria-label="Visitar o site de Wendell Soares" href="https://wendellsoares.jor.br" rel="noopener noreferrer" target="_blank">Wendell Soares <span aria-hidden="true">↗</span></a></div></div>
+</footer>
+<a class="booking-float" href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer" data-booking-open aria-label="Agendar meu horário na Al Capone">
+  <span>AGENDAR MEU HORÁRIO</span><span class="booking-float-arrow" aria-hidden="true">↗</span>
+</a>
+<dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-modal-title">
+  <div class="booking-modal-panel">
+    <div class="booking-modal-header">
+      <div><span class="booking-modal-kicker">AGENDA ONLINE · AL CAPONE BARBEARIA</span><h2 class="booking-modal-title" id="booking-modal-title">ESCOLHA SEU HORÁRIO.</h2></div>
+      <button class="booking-modal-close" id="booking-modal-close" type="button" aria-label="Fechar agendamento">×</button>
+    </div>
+    <p class="booking-modal-fallback">Se a agenda não carregar nesta janela, <a href="https://dellsoares.github.io/alcapone-agendamento/" target="_blank" rel="noopener noreferrer">abra em uma nova aba ↗</a>.</p>
+    <iframe class="booking-modal-frame" id="booking-frame" title="Agenda online da Al Capone Barbearia" src="about:blank" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-write"></iframe>
+  </div>
+</dialog>
+<script id="alcapone-booking-modal-script">
+(() => {
+  const bookingUrl = 'https://dellsoares.github.io/alcapone-agendamento/';
+  const dialog = document.getElementById('booking-modal');
+  const frame = document.getElementById('booking-frame');
+  const closeButton = document.getElementById('booking-modal-close');
+  if (!dialog || !frame || !closeButton) return;
+
+  const openBooking = () => {
+    if (frame.getAttribute('src') === 'about:blank') frame.setAttribute('src', bookingUrl);
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  document.querySelectorAll('[data-booking-open]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      openBooking();
+    });
+  });
+
+  closeButton.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => frame.setAttribute('src', 'about:blank'));
+})();
+</script>
+</body>
+</html>
