@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#17110d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Al Capone">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Painel administrativo | Al Capone</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-wrap{width:min(1280px,calc(100% - 36px));margin:0 auto}
+    .admin-page{min-height:82vh;padding:48px 0 80px;background:radial-gradient(circle at 100% 0%,#48301f 0%,transparent 46%),#16110d}
+    .admin-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:25px}
+    .admin-head h1{font:clamp(48px,6vw,68px)/.9 var(--display);margin:10px 0}
+    .admin-head p{color:#b9aa9d;font-size:12px}
+    .admin-card{background:#251b14;border:1px solid #6a4730;padding:22px;margin:18px 0;color:#ded0c2}
+    .admin-card h2{font:34px var(--display);margin:0 0 10px}
+    .admin-card p{font-size:12px;color:#bda996;line-height:1.7}
+    .admin-login{max-width:480px;margin:45px auto}
+    .admin-form label,.admin-card label{display:block;color:#dfcdb9;font-size:10px;font-weight:800;letter-spacing:.7px;margin:12px 0 6px}
+    .admin-form input,.admin-card input,.admin-card select,.admin-card textarea,.admin-modal input,.admin-modal select{width:100%;background:#17110d;border:1px solid #664b35;padding:12px;color:white;font:12px var(--font);border-radius:0;min-height:43px}
+    .admin-form input:focus,.admin-card input:focus,.admin-card select:focus,.admin-card textarea:focus{outline:1px solid var(--accent)}
+    .admin-btn{padding:12px 15px;border:1px solid #8a603e;background:#382619;color:#e7c5a4;font-size:10px;font-weight:800;letter-spacing:.6px}
+    .admin-btn:hover{background:#684329}
+    .admin-btn.primary{background:var(--accent);color:#160f0a;border-color:var(--accent)}
+    .admin-btn.primary:hover{background:var(--accent2)}
+    .admin-btn.danger{border-color:#8b4c3c;color:#f0b6a3}
+    .admin-btn.small{padding:8px 10px;font-size:9px}
+    .admin-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .admin-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:25px 0}
+    .admin-tabs button{background:#2d2119;border:1px solid #644a32;color:#eedbc8;font-size:10px;font-weight:800;letter-spacing:1px;padding:14px 18px}
+    .admin-tabs button.active{color:#160f0a;background:var(--accent);border-color:var(--accent)}
+    .admin-section{display:none}.admin-section.active{display:block}
+    .admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .admin-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .admin-tools{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:15px 0}
+    .admin-tools>div{min-width:150px;flex:1}
+    .admin-table-wrap{overflow:auto}
+    .admin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:760px}
+    .admin-table th{text-align:left;color:#b88e69;letter-spacing:.7px;padding:12px 9px;background:#17110d;white-space:nowrap}
+    .admin-table td{border-top:1px solid #4c3929;padding:12px 9px;color:#e7dbce;vertical-align:middle}
+    .admin-table td small{display:block;color:#ad9b8a;margin-top:4px}
+    .admin-chip{display:inline-block;border:1px solid #856243;padding:5px 8px;color:#dcb185;font-size:9px;white-space:nowrap}
+    .admin-chip.cancelado{opacity:.55}.admin-chip.concluido{border-color:#5c6e49;color:#b9c497}.admin-chip.ausente{border-color:#9b5e4e;color:#e6a58e}
+    .admin-note{font-size:12px;color:#e4b783;min-height:20px;margin:14px 0}
+    .admin-note.error{color:#ffad9d}
+    .admin-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}
+    .admin-stat{background:#1a130f;border:1px solid #4a3526;padding:15px}
+    .admin-stat strong{display:block;font:34px var(--display);color:var(--accent2)}
+    .admin-stat span{font-size:9px;letter-spacing:1px;color:#b9a695}
+    .admin-service-row{display:grid;grid-template-columns:minmax(150px,2fr) 95px 115px 90px auto;gap:10px;align-items:end;padding:13px 0;border-bottom:1px solid #4b3628}
+    .admin-service-row label{margin-top:0}
+    .admin-check{display:flex!important;align-items:center;gap:8px}
+    .admin-check input{width:18px!important;min-height:18px!important;accent-color:var(--accent)}
+    .admin-hours-row{display:grid;grid-template-columns:110px 100px 1fr 1fr;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #4b3628}
+    .admin-hours-row>strong{font-size:11px}
+    .admin-list-item{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:13px 0;border-bottom:1px solid #4b3628;font-size:11px}
+    .admin-modal{border:1px solid #8b6345;background:#211913;color:var(--light);width:min(520px,calc(100% - 28px));padding:25px}
+    .admin-modal::backdrop{background:#000b}
+    .admin-modal h2{font:34px var(--display);margin:0 0 10px}
+    .admin-modal form{display:grid;gap:8px}
+    .admin-modal menu{display:flex;justify-content:flex-end;gap:8px;padding:0;margin:15px 0 0}
+    .admin-top-actions{display:flex;gap:10px;align-items:center}
+    .admin-top-actions span{font-size:10px;color:#b9aa9d}
+    .admin-footer{border-top:1px solid #433025;padding:22px 0;color:#8f7c70;font-size:10px;display:flex;justify-content:space-between;gap:10px}
+    .admin-footer a{color:#d6a97e}
+    [hidden]{display:none!important}
+    @media(max-width:800px){.admin-grid{grid-template-columns:1fr}.admin-service-row{grid-template-columns:1fr 1fr}.admin-service-row>div:first-child{grid-column:1/-1}.admin-hours-row{grid-template-columns:85px 90px 1fr 1fr}.admin-head{align-items:flex-start;flex-direction:column}.admin-top-actions{width:100%;justify-content:space-between}}
+    @media(max-width:560px){.admin-wrap{width:calc(100% - 24px)}.admin-page{padding-top:30px}.admin-card{padding:16px}.admin-fields{grid-template-columns:1fr}.admin-stat-row{gap:7px}.admin-stat{padding:10px}.admin-stat strong{font-size:28px}.admin-stat span{font-size:8px}.admin-hours-row{grid-template-columns:1fr 1fr}.admin-hours-row>strong{grid-column:1/-1}.admin-tabs button{flex:1;padding:12px 8px;font-size:9px}.admin-footer{flex-direction:column}}
+
+    /* Painel mobile: navegação e controles confortáveis ao toque */
+    .admin-actions .admin-btn{min-height:44px}
+    .admin-table td[data-label]::before{content:none}
+    .admin-support{color:#d8c2ad}
+    .admin-support a{color:#e5b27f;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+    @media(max-width:700px){
+      .wrap{width:calc(100% - 24px)}
+      .topbar{height:68px}
+      .topbar-inner{gap:8px}
+      .brand{gap:9px;min-width:0}
+      .brand img{width:42px;height:42px}
+      .brand>span{font-size:27px;white-space:nowrap}
+      .brand small{font-size:7px;letter-spacing:3.4px}
+      .admin-top-actions{width:auto;max-width:48%;gap:6px;justify-content:flex-end}
+      .admin-top-actions span{max-width:145px;overflow-wrap:anywhere;text-align:right;font-size:9px}
+      .admin-top-actions .admin-btn{padding:9px 10px;min-height:40px}
+      .admin-wrap{width:calc(100% - 24px)}
+      .admin-page{min-height:calc(100svh - 68px);padding:24px 0 40px}
+      .admin-head{display:flex;align-items:stretch;gap:14px;margin-bottom:18px}
+      .admin-head h1{font-size:clamp(39px,10vw,54px);line-height:.9}
+      .admin-head p{font-size:11px}
+      .admin-head>div:first-child{max-width:100%}
+      .admin-head .admin-actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px}
+      .admin-head .admin-actions .admin-btn{width:100%;padding:11px 7px;font-size:9px;letter-spacing:.35px;min-height:46px}
+      .admin-stat-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+      .admin-stat{padding:10px 8px;min-width:0}
+      .admin-stat strong{font-size:clamp(23px,6vw,30px)}
+      .admin-stat span{font-size:7px;line-height:1.35;letter-spacing:.45px}
+      .admin-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:18px 0}
+      .admin-tabs button{width:100%;min-height:46px;padding:10px 7px;font-size:9px;letter-spacing:.45px}
+      .admin-tabs button:last-child{grid-column:1/-1}
+      .admin-card{padding:14px;margin:12px 0}
+      .admin-card h2{font-size:29px}
+      .admin-card p{font-size:11px;line-height:1.6}
+      .admin-fields{grid-template-columns:1fr;gap:8px}
+      .admin-form input,.admin-card input,.admin-card select,.admin-card textarea,.admin-modal input,.admin-modal select{
+        min-height:46px;font-size:16px;padding:11px 12px;
+      }
+      .admin-card label,.admin-form label{font-size:9px;margin-top:10px}
+      .admin-btn{min-height:44px;padding:11px 12px;font-size:10px}
+      .admin-tools{display:grid;grid-template-columns:1fr;gap:8px;align-items:stretch}
+      .admin-tools>div{min-width:0;width:100%}
+      .admin-tools>button{width:100%}
+      .admin-table-wrap{overflow:visible}
+      .admin-table{display:block;width:100%;min-width:0;border-collapse:separate;border-spacing:0}
+      .admin-table thead{display:none}
+      .admin-table tbody{display:grid;gap:10px}
+      .admin-table tr{
+        display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;
+        border:1px solid #4c3929;background:#1b140f;padding:7px 11px;min-width:0
+      }
+      .admin-table td{
+        display:flex;flex-direction:column;gap:4px;min-width:0;
+        border:0;padding:9px 0;font-size:11px;overflow-wrap:anywhere
+      }
+      .admin-table td[data-label]::before{
+        content:attr(data-label);display:block;color:#b88e69;font-size:8px;
+        font-weight:800;letter-spacing:.7px;margin-bottom:2px
+      }
+      .admin-table td:nth-child(2),.admin-table td:nth-child(6){grid-column:1/-1}
+      .admin-table td[colspan]{grid-column:1/-1;display:block;text-align:center;padding:15px 4px}
+      .admin-table td[colspan]::before{content:none}
+      .admin-table td small{font-size:9px;line-height:1.45;overflow-wrap:anywhere}
+      .admin-table .admin-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+      .admin-table .admin-actions .admin-btn{width:100%;min-height:38px;padding:8px 5px;font-size:8px}
+      .admin-service-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .admin-service-row>div:first-child{grid-column:1/-1}
+      .admin-service-row>button{width:100%;min-height:42px}
+      .admin-hours-row{
+        grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+        border:1px solid #4b3628;padding:11px;margin:10px 0
+      }
+      .admin-hours-row>strong{grid-column:1/-1;font-size:12px;color:#e7c5a4}
+      .admin-hours-row .admin-check{grid-column:1/-1;margin:0}
+      .admin-hours-row input[type=time]{min-width:0}
+      .admin-list-item{align-items:flex-start;flex-direction:column;gap:8px}
+      .admin-modal{width:calc(100% - 20px);max-width:520px;max-height:90svh;overflow:auto;padding:17px}
+      .admin-modal h2{font-size:29px}
+      .admin-modal menu{display:grid;grid-template-columns:1fr 1fr}
+      .admin-modal menu button{min-height:44px;padding:10px 6px;font-size:9px}
+      .admin-footer{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;padding:18px 0 calc(18px + env(safe-area-inset-bottom));font-size:10px}
+      .admin-login{margin:22px auto;padding:18px}
+      .admin-login h1{font-size:clamp(39px,10vw,50px)!important}
+    }
+    @media(max-width:380px){
+      .brand>span{font-size:23px}
+      .brand small{font-size:6px;letter-spacing:2.8px}
+      .admin-top-actions span{display:none}
+      .admin-stat{padding:8px 5px}
+      .admin-stat span{font-size:6.5px}
+      .admin-head .admin-actions .admin-btn{font-size:8px}
+      .admin-table tr{gap:0 8px;padding:6px 8px}
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand"><img src="assets/logo.png" alt="Al Capone" width="58" height="58"><span>AL CAPONE<small>PAINEL ADMINISTRATIVO</small></span></a>
+      <div class="admin-top-actions"><span id="loggedEmail"></span><button id="logoutBtn" class="admin-btn" type="button" hidden>SAIR ↗</button></div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div class="admin-wrap">
+      <section id="loginArea" class="admin-card admin-login">
+        <p class="micro">ÁREA RESTRITA · AL CAPONE</p>
+        <h1 style="font:48px/.92 var(--display);margin:12px 0">ENTRAR NO <em>PAINEL.</em></h1>
+        <p>Use seu e-mail e senha cadastrados pela administração.</p>
+        <form id="loginForm" class="admin-form">
+          <label for="email">E-MAIL</label><input id="email" type="email" autocomplete="username" required placeholder="seu@email.com">
+          <label for="password">SENHA</label><input id="password" type="password" autocomplete="current-password" required placeholder="Sua senha">
+          <button class="admin-btn primary" type="submit" style="width:100%;margin-top:16px">ENTRAR NO PAINEL ↗</button>
+        </form>
+        <p style="margin:13px 0 0;font-size:11px"><a href="#" id="forgotPasswordLink" style="color:#e5b27f;text-decoration:underline;text-underline-offset:3px">Esqueci minha senha</a></p>
+        <p id="loginMessage" class="admin-note" role="alert"></p>
+      </section>
+
+      <section id="panelArea" hidden>
+        <div class="admin-head">
+          <div><p class="micro">GESTÃO DA BARBEARIA</p><h1>CONTROLE DA <em>AGENDA.</em></h1><p>Reservas, horários e serviços em um só lugar.</p></div>
+          <div class="admin-actions">
+            <button id="refreshAll" class="admin-btn" type="button">ATUALIZAR DADOS ↻</button>
+            <button id="resetTestData" class="admin-btn danger" type="button">LIMPAR DADOS DE TESTE</button>
+          </div>
+        </div>
+        <div class="admin-stat-row">
+          <div class="admin-stat"><strong id="statToday">—</strong><span>RESERVAS HOJE</span></div>
+          <div class="admin-stat"><strong id="statConfirmed">—</strong><span>CONFIRMADAS</span></div>
+          <div class="admin-stat"><strong id="statPros">02</strong><span>PROFISSIONAIS ATIVOS</span></div>
+        </div>
+
+        <nav class="admin-tabs" aria-label="Seções do painel">
+          <button type="button" class="active" data-tab="agenda">AGENDA</button>
+          <button type="button" data-tab="manual">NOVO AGENDAMENTO</button>
+          <button type="button" data-tab="bloqueios">BLOQUEIOS</button>
+          <button type="button" data-tab="horarios">EXPEDIENTE</button>
+          <button type="button" data-tab="servicos">SERVIÇOS</button>
+        </nav>
+
+        <section class="admin-section active" data-section="agenda">
+          <div class="admin-card">
+            <h2>RESERVAS</h2>
+            <p>Consulte a agenda e atualize o status de cada atendimento.</p>
+            <div class="admin-tools">
+              <div><label for="bookDate">DATA</label><input id="bookDate" type="date"></div>
+              <div><label for="bookPro">PROFISSIONAL</label><select id="bookPro"><option value="">TODOS</option></select></div>
+              <button id="reloadBookings" class="admin-btn" type="button">BUSCAR ↻</button>
+            </div>
+            <div class="admin-stat-row" style="grid-template-columns:repeat(2,1fr)">
+              <div class="admin-stat"><strong id="dayCount">—</strong><span>ATENDIMENTOS NO DIA</span></div>
+              <div class="admin-stat"><strong id="dayRevenue">—</strong><span>VALOR PREVISTO (CONFIRMADOS)</span></div>
+            </div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>HORÁRIO</th><th>CLIENTE</th><th>PROFISSIONAL</th><th>SERVIÇO</th><th>STATUS</th><th>AÇÕES</th></tr></thead><tbody id="bookRows"><tr><td colspan="6">Carregando agenda...</td></tr></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="manual">
+          <div class="admin-card">
+            <h2>AGENDAMENTO MANUAL</h2>
+            <p>Registre uma reserva feita por telefone ou presencialmente. O horário é validado na agenda antes de confirmar.</p>
+            <form id="manualForm">
+              <div class="admin-fields">
+                <div><label for="manualPro">PROFISSIONAL</label><select id="manualPro" required></select></div>
+                <div><label for="manualService">SERVIÇO</label><select id="manualService" required></select></div>
+                <div><label for="manualDate">DATA</label><input id="manualDate" type="date" required></div>
+                <div><label for="manualTime">HORÁRIO DISPONÍVEL</label><select id="manualTime" required><option value="">Selecione profissional, serviço e data</option></select></div>
+                <div><label for="manualName">NOME DO CLIENTE</label><input id="manualName" maxlength="100" required></div>
+                <div><label for="manualPhone">WHATSAPP COM DDD</label><input id="manualPhone" type="tel" maxlength="25" required placeholder="(31) 99999-9999"></div>
+                <div><label for="manualEmail">E-MAIL (OPCIONAL)</label><input id="manualEmail" type="email" maxlength="150"></div>
+                <div><label for="manualNotes">OBSERVAÇÃO (OPCIONAL)</label><input id="manualNotes" maxlength="400"></div>
+              </div>
+              <label class="admin-check"><input id="manualConsent" type="checkbox" required> Cliente autorizou o uso dos dados para esta reserva.</label>
+              <button class="admin-btn primary" type="submit" style="margin-top:14px">REGISTRAR RESERVA ↗</button>
+              <p id="manualResult" class="admin-note" role="status"></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="bloqueios">
+          <div class="admin-grid">
+            <div class="admin-card">
+              <h2>BLOQUEAR HORÁRIO</h2>
+              <p>Use para pausas, compromissos, férias ou indisponibilidade do profissional.</p>
+              <form id="blockForm">
+                <label for="blockPro">PROFISSIONAL</label><select id="blockPro" required></select>
+                <label for="blockDate">DATA</label><input id="blockDate" type="date" required>
+                <div class="admin-fields">
+                  <div><label for="blockStart">INÍCIO</label><input id="blockStart" type="time" value="12:00" required></div>
+                  <div><label for="blockEnd">FIM</label><input id="blockEnd" type="time" value="13:00" required></div>
+                </div>
+                <label for="blockReason">MOTIVO</label><input id="blockReason" maxlength="150" placeholder="Ex.: compromisso">
+                <button class="admin-btn primary" type="submit" style="margin-top:14px">SALVAR BLOQUEIO ↗</button>
+              </form>
+              <p id="blockMessage" class="admin-note"></p>
+            </div>
+            <div class="admin-card">
+              <h2>PERÍODOS BLOQUEADOS</h2>
+              <div class="admin-tools"><div><label for="blockFilter">DATA</label><input id="blockFilter" type="date"></div><button id="reloadBlocks" class="admin-btn" type="button">ATUALIZAR ↻</button></div>
+              <div id="blockList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="horarios">
+          <div class="admin-card">
+            <h2>EXPEDIENTE</h2>
+            <p>Defina os dias e horários em que cada profissional recebe agendamentos. Esta versão permite uma faixa contínua por dia.</p>
+            <label for="hoursPro">PROFISSIONAL</label><select id="hoursPro" style="max-width:340px"></select>
+            <div id="hoursRows" style="margin-top:16px"></div>
+            <button id="saveHours" class="admin-btn primary" type="button" style="margin-top:16px">SALVAR EXPEDIENTE ↗</button>
+            <p id="hoursMessage" class="admin-note"></p>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="servicos">
+          <div class="admin-card">
+            <h2>SERVIÇOS E PREÇOS</h2>
+            <p>Edite nome, duração, preço e disponibilidade dos serviços exibidos na página de agendamento.</p>
+            <div id="servicesEditor"></div>
+            <p id="servicesMessage" class="admin-note"></p>
+          </div>
+        </section>
+        <p id="globalMessage" class="admin-note" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="rescheduleDialog" class="admin-modal">
+    <h2>REMARCAR RESERVA</h2>
+    <p id="rescheduleClient" style="color:#bda996;font-size:12px"></p>
+    <form id="rescheduleForm">
+      <input id="rescheduleId" type="hidden">
+      <label for="reschedulePro">PROFISSIONAL</label><select id="reschedulePro" required></select>
+      <label for="rescheduleDate">NOVA DATA</label><input id="rescheduleDate" type="date" required>
+      <label for="rescheduleTime">NOVO HORÁRIO</label><select id="rescheduleTime" required><option value="">Selecione a data</option></select>
+      <menu><button type="button" id="closeReschedule" class="admin-btn">VOLTAR</button><button type="submit" class="admin-btn primary">SALVAR ALTERAÇÃO</button></menu>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="admin-wrap admin-footer">
+      <span>Painel restrito · Al Capone Barbearia</span>
+      <span class="admin-support">Dúvidas? Fale com o <a href="https://wa.me/5531983073854" target="_blank" rel="noopener noreferrer">Wendell</a>.</span>
+      <span>Criado por <a href="https://wendellsoares.jor.br" target="_blank" rel="noopener noreferrer">Wendell Soares ↗</a></span>
+    </div>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (async () => {
+    'use strict';
+    const SUPABASE_URL = 'https://vsqvzfwlndkwmajkvtuc.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_SwpbISATzFXp2N8T6IRPIA_V6k6Xecg';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const $ = (s, root=document) => root.querySelector(s);
+    const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+    const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const today = () => new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    const money = n => Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+    const dateBR = s => new Date(s+'T12:00:00-03:00').toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'});
+    const timeBR = s => new Date(s).toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
+    const isoLocal = (date,time) => new Date(`${date}T${time}:00-03:00`).toISOString();
+    const plusMinutes = (iso,mins) => new Date(new Date(iso).getTime()+mins*60000).toISOString();
+    const startDay = d => isoLocal(d,'00:00');
+    const endDay = d => isoLocal(nextDate(d),'00:00');
+    const nextDate = d => {const x=new Date(d+'T12:00:00-03:00');x.setDate(x.getDate()+1);return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(x)};
+    const weekdays = ['DOMINGO','SEGUNDA','TERÇA','QUARTA','QUINTA','SEXTA','SÁBADO'];
+    let professionals=[], services=[], bookings=[], schedules=[], currentUser=null, rescheduleBooking=null;
+
+    function message(id, text, ok=true){const el=$('#'+id);if(!el)return;el.textContent=text||'';el.classList.toggle('error',!ok);}
+    function fillSelect(id, items, label){const el=$('#'+id);if(!el)return;const old=el.value;el.innerHTML=(label?`<option value="">${esc(label)}</option>`:'')+items.map(x=>`<option value="${esc(x.id)}">${esc(x.nome)}</option>`).join('');if(items.some(x=>String(x.id)===old))el.value=old;}
+    function tab(name){$$('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));$$('[data-section]').forEach(s=>s.classList.toggle('active',s.dataset.section===name));}
+    $$('[data-tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
+
+    async function rpc(name,args){
+      const {data,error}=await sb.rpc(name,args);
+      if(error)throw new Error(error.message||'Falha na operação.');
+      return data;
+    }
+    async function checkAdmin(){
+      const {data:{user},error:userError}=await sb.auth.getUser();
+      if(userError||!user)return false;
+      const {data,error}=await sb.from('administradores').select('usuario_id').eq('usuario_id',user.id).maybeSingle();
+      if(error)throw error;
+      if(!data)return false;
+      currentUser=user;return true;
+    }
+    async function showPanel(){
+      const ok=await checkAdmin();
+      if(!ok){await sb.auth.signOut();$('#panelArea').hidden=true;$('#loginArea').hidden=false;$('#logoutBtn').hidden=true;throw new Error('Este e-mail não está autorizado como administrador.');}
+      $('#loginArea').hidden=true;$('#panelArea').hidden=false;$('#logoutBtn').hidden=false;$('#loggedEmail').textContent=currentUser.email||'Administrador';
+      await loadBase();
+    }
+    $('#loginForm').addEventListener('submit',async e=>{
+      e.preventDefault();message('loginMessage','Verificando acesso...');
+      const {error}=await sb.auth.signInWithPassword({email:$('#email').value.trim(),password:$('#password').value});
+      if(error){message('loginMessage',error.message==='Invalid login credentials'?'E-mail ou senha incorretos.':error.message,false);return;}
+      try{await showPanel();message('loginMessage','');}catch(err){message('loginMessage',err.message,false);}
+    });
+    $('#forgotPasswordLink').addEventListener('click',async e=>{
+      e.preventDefault();
+      const email=$('#email').value.trim();
+      if(!email){message('loginMessage','Digite seu e-mail no campo acima e clique em “Esqueci minha senha”.',false);$('#email').focus();return;}
+      message('loginMessage','Enviando link de recuperação...');
+      const redirectTo=new URL('recuperar-senha.html',location.href).href;
+      const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo});
+      if(error){message('loginMessage',error.message,false);return;}
+      message('loginMessage','Se o e-mail estiver cadastrado, você receberá um link para criar uma nova senha. Confira também o spam.');
+    });
+    $('#logoutBtn').addEventListener('click',async()=>{await sb.auth.signOut();location.reload();});
+
+    $('#resetTestData').addEventListener('click', async () => {
+      const confirmed = confirm(
+        'ATENÇÃO: isso apagará TODAS as reservas (confirmadas, concluídas, canceladas e ausências) e TODOS os bloqueios. Profissionais, serviços, preços, expediente e logins serão preservados. Deseja continuar?'
+      );
+      if (!confirmed) return;
+
+      const typed = prompt('Para confirmar, digite LIMPAR:');
+      if (typed !== 'LIMPAR') {
+        message('globalMessage', 'Limpeza cancelada. Nenhum dado foi alterado.');
+        return;
+      }
+
+      const button = $('#resetTestData');
+      button.disabled = true;
+      button.textContent = 'LIMPANDO...';
+      message('globalMessage', 'Limpando reservas e bloqueios...');
+      try {
+        const { data, error } = await sb.rpc('alcapone_resetar_testes');
+        if (error) throw error;
+        await loadBase();
+        const reservas = Number(data?.reservas_apagadas ?? 0);
+        const bloqueios = Number(data?.bloqueios_apagados ?? 0);
+        message('globalMessage', `Limpeza concluída: ${reservas} reserva(s) e ${bloqueios} bloqueio(s) removido(s).`);
+      } catch (err) {
+        message('globalMessage', `Não foi possível limpar os dados: ${err.message}`, false);
+      } finally {
+        button.disabled = false;
+        button.textContent = 'LIMPAR DADOS DE TESTE';
+      }
+    });
+
+    async function loadBase(){
+      const [p,s]=await Promise.all([
+        sb.from('profissionais').select('id,nome,ativo').order('nome'),
+        sb.from('servicos').select('id,nome,duracao_minutos,preco,ativo').order('nome')
+      ]);
+      if(p.error)throw p.error;if(s.error)throw s.error;
+      professionals=p.data||[];services=s.data||[];
+      const activePros=professionals.filter(x=>x.ativo);
+      ['bookPro','manualPro','blockPro','hoursPro','reschedulePro'].forEach(id=>fillSelect(id,professionals.filter(x=>id==='bookPro'||id==='reschedulePro'||x.ativo),id==='bookPro'?'TODOS':''));
+      fillSelect('manualService',services.filter(x=>x.ativo),'');
+      $('#statPros').textContent=String(activePros.length).padStart(2,'0');
+      $('#bookDate').value=today();$('#manualDate').value=today();$('#blockDate').value=today();$('#blockFilter').value=today();
+      $('#rescheduleDate').min=today();
+      await Promise.all([loadBookings(),loadBlocks(),loadHours(),renderServices()]);
+      await loadManualAvailability();
+    }
+    $('#refreshAll').addEventListener('click',async()=>{try{await loadBase();message('globalMessage','Dados atualizados.');}catch(e){message('globalMessage',e.message,false);}});
+    $('#reloadBookings').addEventListener('click',loadBookings);
+    $('#bookDate').addEventListener('change',loadBookings);$('#bookPro').addEventListener('change',loadBookings);
+
+    async function loadBookings(){
+      const date=$('#bookDate').value||today();const from=startDay(date),to=endDay(date);
+      let q=sb.from('reservas').select('*').gte('inicio',from).lt('inicio',to).order('inicio');
+      if($('#bookPro').value)q=q.eq('profissional_id',$('#bookPro').value);
+      const {data,error}=await q;if(error)throw error;
+      bookings=data||[];
+      const proMap=new Map(professionals.map(x=>[x.id,x.nome])),serviceMap=new Map(services.map(x=>[x.id,x]));
+      const confirmed=bookings.filter(x=>x.status==='confirmado');
+      const revenue=confirmed.reduce((sum,b)=>sum+Number(serviceMap.get(b.servico_id)?.preco||0),0);
+      $('#statToday').textContent=String(bookings.filter(x=>x.inicio>=startDay(today())&&x.inicio<endDay(today())).length).padStart(2,'0');
+      $('#statConfirmed').textContent=String(confirmed.length).padStart(2,'0');
+      $('#dayCount').textContent=String(bookings.length).padStart(2,'0');
+      $('#dayRevenue').textContent=money(revenue);
+      $('#bookRows').innerHTML=bookings.map(b=>{
+        const s=serviceMap.get(b.servico_id)||{},p=proMap.get(b.profissional_id)||'—';
+        const status=b.status;
+        const actions=status==='confirmado'?`<div class="admin-actions"><button class="admin-btn small" data-act="done" data-id="${b.id}">CONCLUIR</button><button class="admin-btn small" data-act="absent" data-id="${b.id}">FALTA</button><button class="admin-btn small" data-act="move" data-id="${b.id}">REMARCAR</button><button class="admin-btn small danger" data-act="cancel" data-id="${b.id}">CANCELAR</button></div>`:'—';
+        return `<tr><td data-label="HORÁRIO"><strong>${dateBR(date)}</strong><small>${timeBR(b.inicio)}–${timeBR(b.fim)}</small></td><td data-label="CLIENTE"><strong>${esc(b.cliente_nome)}</strong><small>${esc(b.cliente_whatsapp)}${b.cliente_email?' · '+esc(b.cliente_email):''}</small></td><td data-label="PROFISSIONAL">${esc(p)}</td><td data-label="SERVIÇO">${esc(s.nome||'—')}<small>${s.duracao_minutos||'—'} min · ${money(s.preco)}</small></td><td data-label="STATUS"><span class="admin-chip ${esc(status)}">${esc(status.toUpperCase())}</span></td><td data-label="AÇÕES">${actions}</td></tr>`;
+      }).join('')||'<tr><td colspan="6">Nenhuma reserva encontrada nesta data.</td></tr>';
+      $$('[data-act]', $('#bookRows')).forEach(btn=>btn.addEventListener('click',()=>bookingAction(btn.dataset.act,btn.dataset.id)));
+    }
+    async function bookingAction(action,id){
+      const b=bookings.find(x=>x.id===id);if(!b)return;
+      if(action==='move'){openReschedule(b);return;}
+      const status={done:'concluido',absent:'ausente',cancel:'cancelado'}[action];
+      const labels={concluido:'concluir este atendimento',ausente:'marcar falta',cancelado:'cancelar esta reserva'};
+      if(!confirm(`Deseja ${labels[status]}?`))return;
+      const {error}=await sb.from('reservas').update({status}).eq('id',id);
+      if(error){message('globalMessage',error.message,false);return;}
+      message('globalMessage','Status atualizado.');await loadBookings();
+    }
+
+    async function loadManualAvailability(){
+      const pro=$('#manualPro').value,service=$('#manualService').value,date=$('#manualDate').value,el=$('#manualTime');
+      if(!pro||!service||!date){el.innerHTML='<option value="">Selecione profissional, serviço e data</option>';return;}
+      el.innerHTML='<option value="">CONSULTANDO...</option>';
+      try{const slots=await rpc('alcapone_disponibilidade',{p_profissional_id:pro,p_servico_id:service,p_data:date});el.innerHTML=(slots||[]).map(x=>`<option value="${esc(x.hora)}">${esc(x.hora)}</option>`).join('')||'<option value="">SEM HORÁRIOS DISPONÍVEIS</option>';}
+      catch(e){el.innerHTML='<option value="">ERRO AO CONSULTAR</option>';message('manualResult',e.message,false);}
+    }
+    ['manualPro','manualService','manualDate'].forEach(id=>$('#'+id).addEventListener('change',loadManualAvailability));
+    $('#manualForm').addEventListener('submit',async e=>{
+      e.preventDefault();message('manualResult','Registrando...');
+      try{
+        if(!$('#manualConsent').checked)throw new Error('Confirme a autorização do cliente.');
+        const data=await rpc('alcapone_agendar',{
+          p_profissional_id:$('#manualPro').value,p_servico_id:$('#manualService').value,p_data:$('#manualDate').value,
+          p_hora:$('#manualTime').value,p_nome:$('#manualName').value.trim(),p_whatsapp:$('#manualPhone').value.trim(),
+          p_email:$('#manualEmail').value.trim()||null,p_observacoes:$('#manualNotes').value.trim()||null
+        });
+        message('manualResult',`Reserva ${data.code} registrada. Envie a confirmação ao cliente pelo WhatsApp.`);
+        const phone=$('#manualPhone').value.replace(/\D/g,'');
+        const text=`Olá! Seu horário na Al Capone está confirmado: ${data.service}, com ${data.professional}. Código: ${data.code}.`;
+        const wa=`https://wa.me/55${phone}?text=${encodeURIComponent(text)}`;
+        $('#manualResult').insertAdjacentHTML('beforeend',` <a href="${wa}" target="_blank" rel="noopener noreferrer" style="color:#e5b27f;text-decoration:underline">ABRIR WHATSAPP ↗</a>`);
+        e.target.reset();$('#manualDate').value=today();await loadManualAvailability();await loadBookings();
+      }catch(err){message('manualResult',err.message,false);}
+    });
+
+    async function loadBlocks(){
+      const date=$('#blockFilter').value||today(),from=startDay(date),to=endDay(date);
+      const {data,error}=await sb.from('bloqueios').select('*').gte('inicio',from).lt('inicio',to).order('inicio');
+      if(error)throw error;
+      const proMap=new Map(professionals.map(x=>[x.id,x.nome]));
+      $('#blockList').innerHTML=(data||[]).map(b=>`<div class="admin-list-item"><div><strong>${esc(proMap.get(b.profissional_id)||'—')}</strong><br>${dateBR(date)} · ${timeBR(b.inicio)}–${timeBR(b.fim)}<br><small>${esc(b.motivo||'Sem motivo informado')}</small></div><button class="admin-btn small danger" type="button" data-unblock="${b.id}">REMOVER</button></div>`).join('')||'<p>Nenhum bloqueio nesta data.</p>';
+      $$('[data-unblock]', $('#blockList')).forEach(btn=>btn.addEventListener('click',async()=>{
+        if(!confirm('Remover este bloqueio?'))return;
+        const {error}=await sb.from('bloqueios').delete().eq('id',btn.dataset.unblock);
+        if(error){message('blockMessage',error.message,false);return;}
+        message('blockMessage','Bloqueio removido.');await loadBlocks();
+      }));
+    }
+    $('#reloadBlocks').addEventListener('click',loadBlocks);$('#blockFilter').addEventListener('change',loadBlocks);
+    $('#blockForm').addEventListener('submit',async e=>{
+      e.preventDefault();message('blockMessage','Salvando bloqueio...');
+      try{
+        const pro=$('#blockPro').value,date=$('#blockDate').value,start=$('#blockStart').value,end=$('#blockEnd').value;
+        if(end<=start)throw new Error('O horário final precisa ser posterior ao inicial.');
+        const startIso=isoLocal(date,start),endIso=isoLocal(date,end);
+        const {data:overlaps,error:overlapError}=await sb.from('reservas').select('id').eq('profissional_id',pro).eq('status','confirmado').lt('inicio',endIso).gt('fim',startIso);
+        if(overlapError)throw overlapError;
+        if(overlaps?.length)throw new Error('Há reserva confirmada nesse período. Trate a reserva antes de bloquear.');
+        const {error}=await sb.from('bloqueios').insert({profissional_id:pro,inicio:startIso,fim:endIso,motivo:$('#blockReason').value.trim()||null});
+        if(error)throw error;
+        message('blockMessage','Período bloqueado.');e.target.reset();$('#blockDate').value=today();$('#blockStart').value='12:00';$('#blockEnd').value='13:00';await loadBlocks();
+      }catch(err){message('blockMessage',err.message,false);}
+    });
+
+    async function loadHours(){
+      const {data,error}=await sb.from('horarios_semanais').select('*').eq('profissional_id',$('#hoursPro').value).order('dia_semana');
+      if(error)throw error;schedules=data||[];renderHours();
+    }
+    function renderHours(){
+      const rows=Array.from({length:7},(_,day)=>{
+        const row=schedules.find(x=>x.dia_semana===day);
+        return `<div class="admin-hours-row" data-day="${day}"><strong>${weekdays[day]}</strong><label class="admin-check"><input class="dayEnabled" type="checkbox" ${row?'checked':''}> ABERTO</label><input class="dayStart" type="time" value="${row?String(row.inicio).slice(0,5):'09:00'}" aria-label="Início"><input class="dayEnd" type="time" value="${row?String(row.fim).slice(0,5):'18:00'}" aria-label="Fim"></div>`;
+      }).join('');
+      $('#hoursRows').innerHTML=rows;
+    }
+    $('#hoursPro').addEventListener('change',loadHours);
+    $('#saveHours').addEventListener('click',async()=>{
+      message('hoursMessage','Salvando expediente...');
+      try{
+        const pro=$('#hoursPro').value;
+        for(const row of $$('.admin-hours-row')){
+          const day=Number(row.dataset.day),enabled=$('.dayEnabled',row).checked,start=$('.dayStart',row).value,end=$('.dayEnd',row).value;
+          const {error:delError}=await sb.from('horarios_semanais').delete().eq('profissional_id',pro).eq('dia_semana',day);
+          if(delError)throw delError;
+          if(enabled){
+            if(end<=start)throw new Error(`Horário inválido em ${weekdays[day]}.`);
+            const {error:insError}=await sb.from('horarios_semanais').insert({profissional_id:pro,dia_semana:day,inicio:start,fim:end});
+            if(insError)throw insError;
+          }
+        }
+        message('hoursMessage','Expediente salvo.');await loadHours();
+      }catch(err){message('hoursMessage',err.message,false);}
+    });
+
+    async function renderServices(){
+      $('#servicesEditor').innerHTML=services.map(s=>`<div class="admin-service-row" data-service="${s.id}">
+        <div><label>NOME</label><input class="serviceName" maxlength="120" value="${esc(s.nome)}"></div>
+        <div><label>DURAÇÃO (MIN)</label><input class="serviceDuration" type="number" min="10" max="300" step="5" value="${s.duracao_minutos}"></div>
+        <div><label>PREÇO (R$)</label><input class="servicePrice" type="number" min="0" step="0.01" value="${Number(s.preco).toFixed(2)}"></div>
+        <div><label class="admin-check"><input class="serviceActive" type="checkbox" ${s.ativo?'checked':''}> ATIVO</label></div>
+        <button type="button" class="admin-btn small saveService">SALVAR</button>
+      </div>`).join('');
+      $$('.saveService').forEach(btn=>btn.addEventListener('click',async()=>{
+        const row=btn.closest('[data-service]');message('servicesMessage','Salvando serviço...');
+        const payload={nome:$('.serviceName',row).value.trim(),duracao_minutos:Number($('.serviceDuration',row).value),preco:Number($('.servicePrice',row).value),ativo:$('.serviceActive',row).checked};
+        if(!payload.nome||payload.duracao_minutos<5||payload.duracao_minutos>300||payload.preco<0){message('servicesMessage','Confira nome, duração e preço.',false);return;}
+        const {error}=await sb.from('servicos').update(payload).eq('id',row.dataset.service);
+        if(error){message('servicesMessage',error.message,false);return;}
+        message('servicesMessage','Serviço atualizado.');const {data}=await sb.from('servicos').select('id,nome,duracao_minutos,preco,ativo').order('nome');services=data||[];await renderServices();
+      }));
+    }
+
+    async function openReschedule(b){
+      rescheduleBooking=b;
+      $('#rescheduleId').value=b.id;$('#rescheduleClient').textContent=`${b.cliente_nome} · ${timeBR(b.inicio)} · ${b.id.slice(0,8).toUpperCase()}`;
+      $('#reschedulePro').value=b.profissional_id;
+      $('#rescheduleDate').value=b.inicio.slice(0,10);
+      $('#rescheduleTime').innerHTML='<option value="">Consultando horários...</option>';
+      $('#rescheduleDialog').showModal();
+      await loadRescheduleSlots();
+    }
+    async function loadRescheduleSlots(){
+      if(!rescheduleBooking)return;
+      const pro=$('#reschedulePro').value,date=$('#rescheduleDate').value,el=$('#rescheduleTime');
+      el.innerHTML='<option value="">CONSULTANDO...</option>';
+      try{
+        const slots=await rpc('alcapone_disponibilidade',{p_profissional_id:pro,p_servico_id:rescheduleBooking.servico_id,p_data:date});
+        el.innerHTML=(slots||[]).map(x=>`<option value="${esc(x.hora)}">${esc(x.hora)}</option>`).join('')||'<option value="">SEM HORÁRIOS</option>';
+      }catch(e){el.innerHTML='<option value="">ERRO AO CONSULTAR</option>';message('globalMessage',e.message,false);}
+    }
+    ['reschedulePro','rescheduleDate'].forEach(id=>$('#'+id).addEventListener('change',loadRescheduleSlots));
+    $('#closeReschedule').addEventListener('click',()=>$('#rescheduleDialog').close());
+    $('#rescheduleForm').addEventListener('submit',async e=>{
+      e.preventDefault();if(!rescheduleBooking)return;
+      const pro=$('#reschedulePro').value,date=$('#rescheduleDate').value,time=$('#rescheduleTime').value;
+      const service=services.find(x=>x.id===rescheduleBooking.servico_id);
+      const inicio=isoLocal(date,time),fim=plusMinutes(inicio,service?.duracao_minutos||30);
+      const {error}=await sb.from('reservas').update({profissional_id:pro,inicio,fim}).eq('id',rescheduleBooking.id).eq('status','confirmado');
+      if(error){message('globalMessage',error.message.includes('alcapone_reservas_sem_sobreposicao')?'Este horário acabou de ser ocupado. Escolha outro.':error.message,false);return;}
+      $('#rescheduleDialog').close();message('globalMessage','Reserva remarcada. Avise o cliente pelo WhatsApp.');await loadBookings();
+    });
+
+    $('#blockDate').min=today();$('#manualDate').min=today();
+    const {data:{session}}=await sb.auth.getSession();
+    if(session){try{await showPanel();}catch(e){message('loginMessage',e.message,false);}}
+  })();
+  </script>
+</body>
+</html>
