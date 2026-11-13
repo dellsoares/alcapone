@@ -183,3 +183,59 @@ a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cur
 .footer-credit a span{font-size:14px}
 @media(max-width:760px){.appbarber-embed{margin-top:36px}.appbarber-embed-header{padding:20px;flex-wrap:wrap}.appbarber-embed-fallback{padding:18px 20px}.appbarber-frame-wrap{min-height:650px}.appbarber-frame-wrap iframe{min-height:650px;height:78svh}}
 @media(max-width:530px){.appbarber-embed-header{gap:12px}.appbarber-embed-header h3{font-size:36px}.appbarber-embed-fallback a{white-space:normal}.footer-credit{margin-bottom:0;padding-bottom:24px}}
+
+
+/* === V5 refinements === */
+.hero-video{opacity:.46;filter:sepia(.18) saturate(.78) brightness(.72) contrast(1.04)}
+.hero::before{display:none}
+.hero-stamp{right:18px;top:53%;transform:translateY(-50%);width:168px;height:168px;border:1px solid rgba(207,129,77,.45);background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.08),rgba(255,255,255,.01) 55%),rgba(7,5,4,.35);backdrop-filter:blur(4px)}
+.hero-stamp::after{inset:10px;border-style:solid;border-color:rgba(207,129,77,.18)}
+.hero-stamp-logo{width:122px;height:122px;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+.about-frame img,.service-photo img,.style-item img,.team-photo img,.price-photo img{filter:sepia(.22) saturate(.74) contrast(1.04) brightness(.93)}
+.about-frame img:hover,.service-card:hover img,.style-item:hover img,.team-card:hover img{filter:sepia(.18) saturate(.86) contrast(1.04) brightness(.97)}
+.service-card-featured{position:relative;border:1px solid rgba(207,129,77,.32);padding:14px 14px 18px;background:linear-gradient(180deg,rgba(207,129,77,.05),transparent 58%)}
+.service-card-featured .service-meta{padding-top:16px}
+.service-badge{position:absolute;z-index:2;right:16px;bottom:16px;background:rgba(15,11,9,.82);border:1px solid rgba(207,129,77,.48);padding:8px 10px;color:var(--accent-light);font-size:9px;font-weight:800;letter-spacing:1.4px}
+.service-card-featured .service-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;margin-top:12px;border:1px solid rgba(207,129,77,.3);color:var(--accent-light);background:rgba(207,129,77,.06)}
+.prices-layout{grid-template-columns:minmax(280px,370px) minmax(0,1fr);gap:24px;align-items:start;min-height:0;box-shadow:none}
+.price-aside{display:grid;gap:18px;align-self:start}
+.price-photo{min-height:270px;height:270px;border:1px solid rgba(207,129,77,.26)}
+.price-panel{padding:38px 40px}
+.price-list.compact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin-top:10px}
+.price-list.compact-grid .price-row{padding:14px 0;min-width:0}
+.price-list.compact-grid .price-row:nth-last-child(-n+2){border-bottom:1px dashed rgba(255,255,255,.16)}
+.price-row h4{font-size:clamp(18px,1.5vw,22px)}
+.price-row p{font-size:11px}
+.price-row>span{font-size:clamp(16px,1.4vw,23px);min-width:96px}
+.price-featured{border:1px solid rgba(207,129,77,.34);background:linear-gradient(160deg,rgba(207,129,77,.10),rgba(19,16,14,.96) 48%);padding:25px 24px 24px}
+.price-featured h3{font:400 clamp(32px,3vw,42px)/.95 var(--display);margin-top:8px;color:#fff}
+.price-featured p{font-size:13px;line-height:1.8;color:#cdbeb2;margin-top:14px}
+.price-featured-meta{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}
+.price-featured-meta span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#d1c1b4}
+.price-featured-meta strong{font:400 36px/.95 var(--display);color:var(--accent-light)}
+.price-featured .button{width:100%;margin-top:22px;justify-content:space-between}
+.booking-section{background:#130d0a url('../images/alcapone/ambiente-fundo.webp') center/cover no-repeat}
+.booking-notice{max-width:520px;margin-inline:auto}
+.booking-link-alternative{margin-top:16px}
+.booking-link-alternative a{font-size:11px}
+.official-booking .booking-submit{margin-top:24px}
+@media (max-width:1180px){
+  .prices-layout{grid-template-columns:320px minmax(0,1fr)}
+  .price-panel{padding:34px 30px}
+}
+@media (max-width:980px){
+  .service-card-featured{padding:10px}
+  .prices-layout{grid-template-columns:1fr;gap:26px}
+  .price-aside{grid-template-columns:1fr 1fr;align-items:stretch}
+}
+@media (max-width:760px){
+  .price-aside{grid-template-columns:1fr}
+  .price-list.compact-grid{grid-template-columns:1fr}
+  .price-photo{height:290px;min-height:290px}
+}
+@media (max-width:530px){
+  .hero-video{opacity:.38}
+  .service-badge{right:12px;bottom:12px;font-size:8px;padding:7px 9px}
+  .price-featured{padding:22px 18px}
+  .price-featured h3{font-size:31px}
+}

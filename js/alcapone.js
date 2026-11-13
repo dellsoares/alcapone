@@ -1,4 +1,4 @@
-/* Al Capone Barbearia — navegação e efeitos visuais. Reservas somente no AppBarber oficial. */
+/* Al Capone Barbearia — navegação e efeitos visuais. */
 (() => {
  'use strict';
  const $=(s,root=document)=>root.querySelector(s);
@@ -17,23 +17,5 @@
  if('IntersectionObserver'in window){const links=$$('.desktop-nav .nav-link');const obs=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-25% 0px -60% 0px'});$$('main section[id]').forEach(el=>obs.observe(el));}
  const video=$('.hero-video');if(video){if(reduced||window.matchMedia('(max-width: 600px) and (prefers-reduced-data: reduce)').matches){video.pause();video.style.display='none';}else{document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else video.play().catch(()=>{});});}}
  const track=$('#styles-track');if(track){const distance=()=>Math.min(track.clientWidth*.8,380);$('#styles-prev').addEventListener('click',()=>track.scrollBy({left:-distance(),behavior:reduced?'instant':'smooth'}));$('#styles-next').addEventListener('click',()=>track.scrollBy({left:distance(),behavior:reduced?'instant':'smooth'}));}
- // Experimental inline view: may be restricted by the AppBarber host's frame policy.
- const inlineToggle=$('#booking-open-inline'), inlineArea=$('#appbarber-embed'), inlineClose=$('#booking-close-inline'), inlineFrame=$('#appbarber-frame');
- if(inlineToggle&&inlineArea&&inlineClose&&inlineFrame){
-  inlineToggle.addEventListener('click',()=>{
-   inlineArea.hidden=false;
-   inlineToggle.setAttribute('aria-expanded','true');
-   if(!inlineFrame.getAttribute('src'))inlineFrame.src=inlineFrame.dataset.src;
-   inlineToggle.firstChild.textContent='AGENDA ABERTA ABAIXO ';
-   inlineArea.scrollIntoView({block:'start',behavior:reduced?'instant':'smooth'});
-  });
-  inlineClose.addEventListener('click',()=>{
-   inlineArea.hidden=true;
-   inlineToggle.setAttribute('aria-expanded','false');
-   inlineToggle.firstChild.textContent='VER AGENDA NESTA PÁGINA ';
-   inlineToggle.scrollIntoView({block:'center',behavior:reduced?'instant':'smooth'});
-   inlineToggle.focus({preventScroll:true});
-  });
- }
  $('#year').textContent=new Date().getFullYear();
 })();
