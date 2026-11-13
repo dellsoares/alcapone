@@ -1,0 +1,6 @@
+# Arquivo localizado em /alcapone/robots.txt para compatibilidade com validadores.
+# Para o Google, o robots.txt efetivo precisa estar em https://dellsoares.github.io/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://dellsoares.github.io/alcapone/sitemap.xml

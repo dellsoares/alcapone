@@ -1,0 +1,38 @@
+AL CAPONE BARBEARIA — SEO LOCAL (13/11/2026)
+
+IMPLEMENTADO:
+- FAQ local com 8 perguntas e respostas, seção responsiva em acordeão nativo.
+- Canonical autorreferente https://dellsoares.github.io/alcapone/.
+- Sitemap.xml com a única URL canônica da landing page.
+- Arquivo robots.txt com referência ao sitemap.
+- Textos ALT preenchidos nas 3 imagens de logotipo (demais ALT preservados).
+- Título e meta description localizados em Padre Eustáquio, Belo Horizonte.
+- Open Graph URL e imagem absolutos, locale pt_BR, Twitter card.
+- Corrigido URL no schema Barbershop (agora página da barbearia, não plataforma de agendamento).
+- Mantidos profissionais, serviços, pagamentos, endereço, valores e horários publicados na página.
+- NÃO inclui o simulador antigo: esta é a versão com FAQ, conforme solicitado.
+
+COMO PUBLICAR NO GITHUB PAGES:
+1. Abra o repositório dellsoares/alcapone no GitHub.
+2. Envie/substitua o CONTEÚDO desta pasta na raiz de publicação: index.html, sitemap.xml,
+   robots.txt, diretórios css/, js/, images/ e demais arquivos.
+3. Faça commit, aguarde o deploy automático e confira:
+   https://dellsoares.github.io/alcapone/
+   https://dellsoares.github.io/alcapone/sitemap.xml
+4. No Google Search Console, envie o sitemap https://dellsoares.github.io/alcapone/sitemap.xml
+   e solicite inspeção da URL canônica.
+
+LIMITAÇÃO IMPORTANTE DO GITHUB PAGES:
+A URL /alcapone/ é uma subpasta do domínio dellsoares.github.io. Um arquivo em
+/alcapone/robots.txt não funciona como robots.txt oficial do Google. O robots efetivo
+é https://dellsoares.github.io/robots.txt e precisa ser publicado no repositório
+que controla a raiz dellsoares.github.io (se necessário). Este pacote não altera esse
+repositório. A presença do sitemap direto e a submissão no Search Console são úteis
+mesmo sem um arquivo robots.txt na raiz.
+
+PAGESPEED: "não disponível" no scanner não equivale a erro de performance.
+A nota precisa de medição real separada; este pacote não inventa uma nota Lighthouse.
+
+SEO: conteúdo visível ajuda a esclarecer relevância local, mas não garante posições
+ou estrelas no Google. Desde maio de 2026, o Google não exibe mais resultados
+avançados de FAQ; por isso, não incluímos schema FAQPage desnecessário.
